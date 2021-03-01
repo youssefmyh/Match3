@@ -1,7 +1,10 @@
 #define GLM_FORCE_RADIANS 
+#define _CRTDBG_MAP_ALLOC
 
 #include <king/Engine.h>
 #include <king/Updater.h>
+#include <stdlib.h>
+#include <crtdbg.h> 
 
 //**********************************************************************
 
@@ -51,6 +54,9 @@ private:
 //**********************************************************************
 
 int main(int argc, char *argv[]) {
+
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // memeory Leak detection
+
 	ExampleGame game;
 	game.Start();
 
