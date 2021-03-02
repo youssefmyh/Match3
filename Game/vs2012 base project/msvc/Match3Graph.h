@@ -17,11 +17,26 @@ public:
 		
 	Match3Graph(std::map<int, std::set<int>> n) :nodes(nodes) {}
 
+	/*
+	* Add Node to the Graph
+	* @param int color
+	* @param int row
+	* @param int col
+	*/
 	void addNode(int color, int row,int col);
 
-	std::tuple<int, int> findNodeLocationById(int nodeId);
 
-	virtual bool test() ;
+	/*
+	* Add Node By Color and ID
+	* @param int color
+	* @param int nodeId
+	*/
+	void addNode(int color, int nodeId);
+	/*
+	* find Node Location By Id 
+	* @param Node Id from 0 --> MAX_COL
+	*/
+	std::tuple<int, int> findNodeLocationById(int nodeId);
 
 
 private:

@@ -1,3 +1,4 @@
 #pragma once
 #define GAME_ROW_MAX 8
 #define GAME_COL_MAX 8
+#define GAME_MAX_CELLS GAME_ROW_MAX *  GAME_COL_MAX
