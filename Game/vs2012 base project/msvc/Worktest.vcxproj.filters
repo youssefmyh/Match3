@@ -19,6 +19,24 @@
     <Filter Include="Header Files\kinglib">
       <UniqueIdentifier>{6821ade4-45c6-4243-9e66-0f5cdb1a863b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\commands">
+      <UniqueIdentifier>{7c617044-720e-4487-b843-8c813af7fabe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\commons">
+      <UniqueIdentifier>{2c666583-8015-4a6c-bb59-55ca74a0d169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\factories">
+      <UniqueIdentifier>{51df6fc2-995f-43b7-902a-19f98968f370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scenes">
+      <UniqueIdentifier>{b5811390-ffe4-483f-933d-6a2b50115e3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\components">
+      <UniqueIdentifier>{748621f7-24e1-4d82-a5ed-f9d3d3b9245a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\logic">
+      <UniqueIdentifier>{ad29c6ee-4f19-4ec7-b453-05bfc83fb019}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -42,6 +60,9 @@
     <ClCompile Include="..\external\include\king\SdlSurface.cpp">
       <Filter>Source Files\kinglib</Filter>
     </ClCompile>
+    <ClCompile Include="Match3Graph.cpp">
+      <Filter>Source Files\logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\include\king\Engine.h">
@@ -64,6 +85,15 @@
     </ClInclude>
     <ClInclude Include="..\external\include\king\Updater.h">
       <Filter>Header Files\kinglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Match3Settings.h">
+      <Filter>Source Files\commons</Filter>
+    </ClInclude>
+    <ClInclude Include="Match3Graph.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

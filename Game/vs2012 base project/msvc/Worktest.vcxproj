@@ -82,6 +82,7 @@
     <ClCompile Include="..\external\include\king\SdlSurface.cpp" />
     <ClCompile Include="..\external\include\king\SdlWindow.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="Match3Graph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\include\king\Engine.h" />
@@ -91,6 +92,9 @@
     <ClInclude Include="..\external\include\king\SdlSurface.h" />
     <ClInclude Include="..\external\include\king\SdlWindow.h" />
     <ClInclude Include="..\external\include\king\Updater.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="Match3Graph.h" />
+    <ClInclude Include="Match3Settings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

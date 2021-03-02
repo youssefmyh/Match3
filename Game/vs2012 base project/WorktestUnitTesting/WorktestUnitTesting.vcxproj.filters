@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="SwapCommandTest.cpp">
+      <Filter>commands</Filter>
+    </ClCompile>
+    <ClCompile Include="RemoveCommandTest.cpp">
+      <Filter>commands</Filter>
+    </ClCompile>
+    <ClCompile Include="FillCommandTest.cpp">
+      <Filter>commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Match3GraphTest.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="commands">
+      <UniqueIdentifier>{202e7e2b-0ae6-4464-a39f-ea968eabb510}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="commons">
+      <UniqueIdentifier>{8ff3a459-a1d7-438d-a1ce-68add92d76e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="factories">
+      <UniqueIdentifier>{597b6fa9-4436-42e0-a23f-01d5c27165db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="components">
+      <UniqueIdentifier>{673cac98-c695-45f1-9c79-41d6f05815ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scenes">
+      <UniqueIdentifier>{c83747e0-cab2-42a9-8aaf-f5bf8fb26786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic">
+      <UniqueIdentifier>{1d3acfdc-1e2e-42f8-b652-7768bf0ae238}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
