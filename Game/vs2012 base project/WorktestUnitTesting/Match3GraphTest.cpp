@@ -14,6 +14,54 @@ namespace GraphTests {
 
 
 
+	TEST(Match3GraphTests, WhenNodeId_0_MAXNodeNumberInRowShouldbe_7) {
+
+		Match3Graph match3graph;
+
+		EXPECT_EQ(match3graph.calculateMaxNodeIdPerRow(0),7);
+
+	}
+
+	TEST(Match3GraphTests, WhenNodeId_11_MAXNodeNumberInRowShouldbe_15) {
+
+		Match3Graph match3graph;
+
+		EXPECT_EQ(match3graph.calculateMaxNodeIdPerRow(11), 15);
+
+	}
+
+	TEST(Match3GraphTests, WhenNodeId_35_MAXNodeNumberInRowShouldbe_39) {
+
+		Match3Graph match3graph;
+
+		EXPECT_EQ(match3graph.calculateMaxNodeIdPerRow(35), 39);
+
+	}
+
+	TEST(Match3GraphTests, WhenNodeId_0_MAXNodeNumberInColShouldbe_56) {
+
+		Match3Graph match3graph;
+
+		EXPECT_EQ(match3graph.calculateMaxNodeIdPerCol(0), 56);
+
+	}
+
+	TEST(Match3GraphTests, WhenNodeId_35_MAXNodeNumberInColShouldbe_59) {
+
+		Match3Graph match3graph;
+
+		EXPECT_EQ(match3graph.calculateMaxNodeIdPerCol(35), 59);
+
+	}
+
+	TEST(Match3GraphTests, WhenNodeId_23_MAXNodeNumberInColShouldbe_63) {
+
+		Match3Graph match3graph;
+
+		EXPECT_EQ(match3graph.calculateMaxNodeIdPerCol(23), 63);
+
+	}
+
 	TEST(Match3GraphTests, TestingDFS) {
 
 		Match3Graph match3graph;

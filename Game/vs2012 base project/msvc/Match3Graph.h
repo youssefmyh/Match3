@@ -76,13 +76,13 @@ public:
 	* Calculate Max NodeId Per Row
 	* Used to know how much you have to continue checking in specific row
 	*/
-	int calculateMaxNodeIdPerRow();
+	int calculateMaxNodeIdPerRow(int nodeId);
 
 	/*
 	* Calculate Max Node Id Per Col
 	* Used to know how much you have to continue checking in specific Col
 	*/
-	int calculateMaxNodeIdPerCol();
+	int calculateMaxNodeIdPerCol(int nodeId);
 
 	std::vector<int> * findMatchesPoints(int nodeId);
 

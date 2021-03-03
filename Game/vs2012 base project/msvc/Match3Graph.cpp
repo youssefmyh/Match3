@@ -34,6 +34,22 @@ std::map<int, std::set<int>>* Match3Graph::getNodes() const
 	return nodes;
 }
 
+int Match3Graph::calculateMaxNodeIdPerRow(int nodeId)
+{
+	std::tuple<int, int> nodeLocation = findNodeLocationById(nodeId);
+	int row = std::get<0>(nodeLocation);
+
+	return ((row+1) * GAME_ROW_MAX) -1; 
+}
+
+
+int Match3Graph::calculateMaxNodeIdPerCol(int nodeId)
+{
+	std::tuple<int, int> nodeLocation = findNodeLocationById(nodeId);
+	int col = std::get<1>(nodeLocation);
+
+	return GAME_MAX_CELLS - (GAME_COL_MAX - col);
+}
 
 
 void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<bool>& vVisited, std::string& newstring, std::vector<std::vector<int>>& options) {
@@ -46,19 +62,63 @@ void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<b
 	std::vector<int> possibleVerticalMatches;
 
 	
-	if (!hVisited[nodeId]) {
-		for (int i = nodeId; i < GAME_ROW_MAX; i++)
-		{
+	
+	if (!hVisited[nodeId]){
+		int maxNodeIdInRow = calculateMaxNodeIdPerRow(nodeId);
 
-			hVisited[nodeId + i] = true;
+		possibleHorizonatlMatches.push_back(colord[nodeId]);
+		for (int i = nodeId + 1; i < maxNodeIdInRow; i++){
+
+			int lastAddedColor = possibleHorizonatlMatches.at(possibleHorizonatlMatches.size() - 1);
+			if (lastAddedColor == colord[i]){
+
+				possibleHorizonatlMatches.push_back(nodeId);
+
+			}else {
+				break;
+			}
+
 		}
+		if (possibleHorizonatlMatches.size() >= 3){
+
+			for each (int visitedNode in possibleHorizonatlMatches)
+			{
+				hVisited[visitedNode] = true;
+			}
+			options.push_back(std::move(possibleHorizonatlMatches));
+		}
+	
 		hVisited[nodeId] = true;
 	}
 	
 	if (!vVisited[nodeId]) {
-		for (int j = nodeId; j < GAME_COL_MAX; j++)
-		{
 
+		int maxNodeIdInCol = calculateMaxNodeIdPerCol(nodeId);
+		possibleVerticalMatches.push_back(nodeId);
+
+		for (int j = nodeId + GAME_COL_MAX ; j < maxNodeIdInCol; j = j + GAME_COL_MAX){
+
+			int lastAddedColor = possibleVerticalMatches.at(possibleVerticalMatches.size() - 1);
+			if (lastAddedColor == colord[j]) {
+
+				possibleVerticalMatches.push_back(nodeId);
+
+			}
+			else {
+				break;
+			}
+
+		}
+
+
+		if (possibleVerticalMatches.size() >= 3) {
+
+			for each (int visitedNode in possibleVerticalMatches)
+			{
+				vVisited[visitedNode] = true;
+			}
+
+			options.push_back(std::move(possibleVerticalMatches));
 		}
 		vVisited[nodeId] = true;
 	}
@@ -96,6 +156,8 @@ void Match3Graph::dfs(int nodeId)
 
 
 }
+
+
 
 std::vector<int> * Match3Graph::findMatchesPoints(int nodeId)
 {
