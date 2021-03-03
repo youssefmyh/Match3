@@ -1,3 +1,6 @@
+//  Created by Youssef Hanna.
+//  Copyright © 2021. All rights reserved.
+//
 #pragma once
 #define GAME_ROW_MAX 8
 #define GAME_COL_MAX 8

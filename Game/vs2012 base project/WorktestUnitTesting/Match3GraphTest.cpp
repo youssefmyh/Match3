@@ -1,3 +1,6 @@
+//  Created by Youssef Hanna.
+//  Copyright © 2021. All rights reserved.
+//
 #include "pch.h"
 #include "../msvc/Match3Graph.cpp"
 namespace GraphTests {
@@ -8,6 +11,19 @@ namespace GraphTests {
 		Match3Graph match3graph;
 
 	};
+
+
+
+	TEST(Match3GraphTests, TestingDFS) {
+
+		Match3Graph match3graph;
+
+		for (int i = 0; i < GAME_MAX_CELLS; i++) {
+			match3graph.addNode(0, i);
+		}
+		match3graph.dfs(0);
+
+	}
 
 
 	TEST(Match3GraphTests, WhenNodeIdLessThan55ShouldhasTopNode) {
