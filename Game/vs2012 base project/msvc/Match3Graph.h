@@ -13,10 +13,21 @@ struct Match3Node {
 };
 class Match3Graph
 {
+
+/*---------------------------------Public Function Section----------------------------------------------------------------*/
 public:
 		
-	Match3Graph(std::map<int, std::set<int>> n) :nodes(nodes) {}
+	Match3Graph() {
+		nodes = new std::map<int, std::set<int>>();
+	}
 
+
+	~Match3Graph() {
+		
+		auto it = nodes->begin();
+		nodes->clear();
+		delete nodes;
+	}
 	/*
 	* Add Node to the Graph
 	* @param int color
@@ -37,10 +48,30 @@ public:
 	* @param Node Id from 0 --> MAX_COL
 	*/
 	std::tuple<int, int> findNodeLocationById(int nodeId);
+	
+	std::map<int, std::set<int>>* getNodes() const;
 
+
+/*---------------------------------Private Function Section----------------------------------------------------------------*/
+private:
+	/*
+	* connectNodeById Every node should connect to 4 nodes 
+	/*In case it's Located Row > 0 & Col <  MAX_COL(8) 
+	* ----|---|-----
+	* ----| Z |-----
+	* ----|---|-----
+	* @param int NodeId
+	*/
+	void connectNodeById(int nodeId);
+
+
+
+
+/*---------------------------------Private Variable Section----------------------------------------------------------------*/
 
 private:
-	std::map<int, std::set<int>> nodes;
+	std::map<int, std::set<int>> *nodes; //Adjacency list of Nodes
+
 
 };
 
