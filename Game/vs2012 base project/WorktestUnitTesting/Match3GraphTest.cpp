@@ -19,6 +19,15 @@ namespace GraphTests {
 
 	}
 
+	TEST(Match3GraphTests, WhenAddNode_64_NodeIdMapSizeShouldbe0) {
+
+		Match3Graph match3graph;
+		match3graph.addNode(0, 64);
+
+		EXPECT_EQ(match3graph.getNodes()->size(), 0);
+
+	}
+
 	TEST(Match3GraphTests, WhenAddNode0MapShouldHas2Edges1AND8) {
 	
 		Match3Graph match3graph;
@@ -102,6 +111,115 @@ namespace GraphTests {
 
 	}
 
+
+	TEST(Match3GraphTests, WhenAddNode_22_MapShouldHas_4_Edges21_14_23_30) {
+
+		Match3Graph match3graph;
+		match3graph.addNode(0, 22);
+		auto map = match3graph.getNodes();
+
+		auto it = map->find(22);
+
+		std::set<int> edges = it->second;
+
+
+		EXPECT_EQ(map->size(),1);
+		EXPECT_NE(it, map->end());
+
+		EXPECT_EQ(edges.size(), 4);
+		EXPECT_NE(edges.find(21), edges.end());
+		EXPECT_NE(edges.find(14), edges.end());
+		EXPECT_NE(edges.find(23), edges.end());
+		EXPECT_NE(edges.find(30), edges.end());
+
+	}
+
+
+	TEST(Match3GraphTests, WhenAddNode_37_MapShouldHas_4_Edges36_38_45_29) {
+
+		Match3Graph match3graph;
+		match3graph.addNode(0, 37);
+		auto map = match3graph.getNodes();
+
+		auto it = map->find(37);
+
+		std::set<int> edges = it->second;
+
+
+		EXPECT_EQ(map->size(), 1);
+		EXPECT_NE(it, map->end());
+
+		EXPECT_EQ(edges.size(), 4);
+		EXPECT_NE(edges.find(36), edges.end());
+		EXPECT_NE(edges.find(38), edges.end());
+		EXPECT_NE(edges.find(45), edges.end());
+		EXPECT_NE(edges.find(29), edges.end());
+
+	}
+
+
+	TEST(Match3GraphTests, WhenAddNode_24_MapShouldHas_3_Edges25_16_32) {
+
+		Match3Graph match3graph;
+		match3graph.addNode(0, 24);
+		auto map = match3graph.getNodes();
+
+		auto it = map->find(24);
+
+		std::set<int> edges = it->second;
+
+
+		EXPECT_EQ(map->size(), 1);
+		EXPECT_NE(it, map->end());
+
+		EXPECT_EQ(edges.size(), 3);
+		EXPECT_NE(edges.find(25), edges.end());
+		EXPECT_NE(edges.find(16), edges.end());
+		EXPECT_NE(edges.find(32), edges.end());
+
+	}
+
+
+	TEST(Match3GraphTests, WhenAddNode_56_MapShouldHas_3_Edges25_16_32) {
+
+		Match3Graph match3graph;
+		match3graph.addNode(0, 56);
+		auto map = match3graph.getNodes();
+
+		auto it = map->find(56);
+
+		std::set<int> edges = it->second;
+
+
+		EXPECT_EQ(map->size(), 1);
+		EXPECT_NE(it, map->end());
+
+		EXPECT_EQ(edges.size(), 2);
+		EXPECT_NE(edges.find(57), edges.end());
+		EXPECT_NE(edges.find(48), edges.end());
+
+	}
+
+
+	TEST(Match3GraphTests, WhenAddNode_63_MapShouldHas_3_Edges25_16_32) {
+
+		Match3Graph match3graph;
+		match3graph.addNode(0, 63);
+		auto map = match3graph.getNodes();
+
+		auto it = map->find(63);
+
+		std::set<int> edges = it->second;
+
+
+		EXPECT_EQ(map->size(), 1);
+		EXPECT_NE(it, map->end());
+
+		EXPECT_EQ(edges.size(), 2);
+		EXPECT_NE(edges.find(55), edges.end());
+		EXPECT_NE(edges.find(62), edges.end());
+
+	}
 
 	TEST(Match3GraphTests, WhenAddNode_7_MapShouldHas3Edges6_15) {
 
