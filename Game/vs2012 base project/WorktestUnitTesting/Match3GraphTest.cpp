@@ -9,6 +9,33 @@ namespace GraphTests {
 
 	};
 
+	TEST(Match3GraphTests, WhenConstructGraphWithMoreThan64VectorShouldIgnoreit) {
+
+		Match3Graph match3graph;
+
+		for (int i = 0; i < 100; i++) {
+
+			match3graph.addNode(0, i);
+		}
+		
+
+		auto map = match3graph.getNodes();
+
+		auto it = map->find(6);
+
+		std::set<int> edges = it->second;
+
+
+		EXPECT_EQ(map->size(), 64);
+		EXPECT_NE(it, map->end());
+
+		EXPECT_EQ(edges.size(), 3);
+		EXPECT_NE(edges.find(5), edges.end());
+		EXPECT_NE(edges.find(7), edges.end());
+		EXPECT_NE(edges.find(14), edges.end());
+
+	}
+
 
 	TEST(Match3GraphTests, WhenAddNodeNegativeNodeIdMapSizeShouldbe0) {
 
