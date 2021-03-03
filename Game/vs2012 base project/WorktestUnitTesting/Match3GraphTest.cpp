@@ -9,6 +9,37 @@ namespace GraphTests {
 
 	};
 
+
+	TEST(Match3GraphTests, WhenNodeIdLessThan55ShouldhasTopNode) {
+
+		Match3Graph match3graph;
+
+		for (int i = 0; i < GAME_MAX_CELLS - GAME_COL_MAX; i++) {
+
+			EXPECT_TRUE(match3graph.nodeHasMoreTopNodes(i));
+		}
+
+	}
+
+
+	TEST(Match3GraphTests, WhenNodeNotLocatedInLastColsholdHasRightNode) {
+
+		Match3Graph match3graph;
+
+		for (int i = 0; i < GAME_MAX_CELLS ; i++) {
+			int col = i % GAME_COL_MAX;
+			if (col < GAME_ROW_MAX - 1) {
+				EXPECT_TRUE(match3graph.nodeHasMoreRightNodes(i));
+			}
+			else {
+				EXPECT_FALSE(match3graph.nodeHasMoreRightNodes(i));
+			}
+			
+		}
+	}
+
+
+
 	TEST(Match3GraphTests, WhenConstructGraphWithMoreThan64VectorShouldIgnoreit) {
 
 		Match3Graph match3graph;

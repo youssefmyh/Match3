@@ -2,6 +2,7 @@
 #include <set>
 #include <map>
 #include "Match3Settings.h"
+#include <vector>
 
 struct Match3Node {
 
@@ -51,6 +52,19 @@ public:
 	
 	std::map<int, std::set<int>>* getNodes() const;
 
+
+	std::vector<int> * findMatchesPoints(int nodeId);
+
+	/*
+	/* Check if the node has more Right Nodes
+	*/
+	bool nodeHasMoreRightNodes(int nodeId);
+
+
+	/*
+	/* Check if the node has more Right Nodes
+	*/
+	bool nodeHasMoreTopNodes(int nodeId);
 
 /*---------------------------------Private Function Section----------------------------------------------------------------*/
 private:

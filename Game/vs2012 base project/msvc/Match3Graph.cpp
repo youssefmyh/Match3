@@ -33,6 +33,27 @@ std::map<int, std::set<int>>* Match3Graph::getNodes() const
 	return nodes;
 }
 
+std::vector<int> * Match3Graph::findMatchesPoints(int nodeId)
+{
+	return nullptr;
+}
+
+bool Match3Graph::nodeHasMoreRightNodes(int nodeId)
+{
+	std::tuple<int, int> nodeLocation = findNodeLocationById(nodeId);
+	int col = std::get<1>(nodeLocation);
+
+	return col < GAME_ROW_MAX - 1;
+}
+
+bool Match3Graph::nodeHasMoreTopNodes(int nodeId)
+{
+	std::tuple<int, int> nodeLocation = findNodeLocationById(nodeId);
+	int row = std::get<0>(nodeLocation);
+
+	return row < GAME_ROW_MAX - 1;
+}
+
 void Match3Graph::connectNodeById(int nodeId)
 {
 
