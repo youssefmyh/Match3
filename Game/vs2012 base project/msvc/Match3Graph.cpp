@@ -60,8 +60,6 @@ void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<b
 
 	std::vector<int> possibleHorizonatlMatches;
 	std::vector<int> possibleVerticalMatches;
-
-	
 	
 	if (!hVisited[nodeId]){
 		int maxNodeIdInRow = calculateMaxNodeIdPerRow(nodeId);
