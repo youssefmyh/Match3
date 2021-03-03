@@ -65,7 +65,7 @@ void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<b
 		int maxNodeIdInRow = calculateMaxNodeIdPerRow(nodeId);
 
 		possibleHorizonatlMatches.push_back(colord[nodeId]);
-		for (int i = nodeId + 1; i < maxNodeIdInRow; i++){
+		for (int i = nodeId + 1; i < maxNodeIdInRow; i++){ 
 
 			int lastAddedColor = possibleHorizonatlMatches.at(possibleHorizonatlMatches.size() - 1);
 			if (lastAddedColor == colord[i]){
