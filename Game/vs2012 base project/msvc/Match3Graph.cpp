@@ -24,7 +24,7 @@ std::tuple<int, int> Match3Graph::findNodeLocationById(int nodeId)
 {
 	// Find Node Col by dividing (NodeId / Max_Col )
 	int col = nodeId % GAME_COL_MAX;
-	int row = floor( nodeId/ GAME_COL_MAX);
+	int row = (int) floor( nodeId/ GAME_COL_MAX);
 
 	return std::move(std::tuple<int, int>(row,col));
 }
@@ -82,7 +82,7 @@ void Match3Graph::dfsFindAllMatches(int nodeId, std::vector<bool>& hVisited, std
 			}
 
 		}
-		if (possibleHorizonatlMatches.size() >= 3){
+		if (possibleHorizonatlMatches.size() >= GAME_MINMUM_MATCHED){
 
 			for each (int visitedNode in possibleHorizonatlMatches)
 			{
@@ -119,7 +119,7 @@ void Match3Graph::dfsFindAllMatches(int nodeId, std::vector<bool>& hVisited, std
 		}
 
 
-		if (possibleVerticalMatches.size() >= 3) {
+		if (possibleVerticalMatches.size() >= GAME_MINMUM_MATCHED) {
 
 			for each (int visitedNode in possibleVerticalMatches)
 			{
@@ -230,6 +230,10 @@ void Match3Graph::connectNodeById(int nodeId)
 
 }
 
+std::vector<int>& Match3Graph::getNodesColors() {
+
+	return this->nodesColors;
+}
 
 void Match3Graph::setNodesColors(std::vector<int>& levelNodes) {
 
@@ -258,8 +262,7 @@ std::vector<std::vector<int>> Match3Graph::swapNodes(int first, int second) {
 
 }
 
-void Match3Graph::removeMatchedNodes(std::vector<int> markedNodes)
-{
+void Match3Graph::removeMatchedNodes(std::vector<int> markedNodes){
 
 	for (unsigned int i = 0; i < markedNodes.size(); i++) {
 		
@@ -272,6 +275,73 @@ void Match3Graph::removeMatchedNodes(std::vector<int> markedNodes)
 void Match3Graph::nodesGravityCheck(std::vector<int> markedNodes)
 {
 
+	bool isVertical = false;
+	bool isHorizontal = false;
+
+	if (markedNodes.size()  < GAME_MINMUM_MATCHED ) // minum matched number 3 in our case
+		return;
+
+	if (markedNodes[0] == markedNodes[1] + 1)
+	{
+		isHorizontal = true;
+	}
+	else {
+		isVertical = true;
+	}
+
+	if (isVertical){
+		
+		int j = 0;
+
+		for (int col = markedNodes.size() -1; col >= 0; col--)
+		{
+			
+			int removedNodeId = markedNodes[col];
+			int nodeColor = nodesColors[removedNodeId];
+			if (nodeColor == -1) {
+				
+				uint32_t nodeTobeMoved = removedNodeId + markedNodes.size() * GAME_COL_MAX;
+
+				if (nodeTobeMoved < nodesColors.size()) {
+
+					nodesColors[removedNodeId] = nodesColors[nodeTobeMoved];
+					
+				}
+				else {
+
+					nodesColors[removedNodeId] = rand() % 5;
+				}
+				
+				nodesColors[nodeTobeMoved] = -1;
+			}
+
+		}
+	}
+	else {
+	
+		for (int row = markedNodes.size() - 1; row >= 0; row--)
+		{
+			int removedNodeId = markedNodes[row];
+			int nodeColor = nodesColors[removedNodeId];
+			if (nodeColor == -1) {
+
+				uint32_t nodeTobeMoved = removedNodeId * GAME_COL_MAX;
+
+				if (nodeTobeMoved < nodesColors.size()) {
+					nodesColors[removedNodeId] = nodesColors[nodeTobeMoved];
+				}
+				else {
+					nodesColors[removedNodeId] = rand() % 5;
+				}
+				nodesColors[nodeTobeMoved] = -1;
+
+			}
+
+		}
+
+	}
+
+	
 
 
 }

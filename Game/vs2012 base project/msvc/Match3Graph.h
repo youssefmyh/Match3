@@ -23,18 +23,7 @@ public:
 		
 	Match3Graph() {
 		nodes = new std::map<int, std::set<int>>();
-		nodesColors =
-		{
-			0 , 0 , 0 , 1, 2, 3, 4 , 5,
-			0 , 0 , 0 , 1, 2, 3, 4 , 5,
-			0 , 0 , 0 , 1, 2, 3, 4 , 5,
-			0 , 0 , 0 , 1, 2, 3, 4 , 5,
-			0 , 0 , 0 , 1, 2, 3, 4 , 5,
-			0 , 0 , 0 , 1, 2, 3, 4 , 5,
-			0 , 0 , 0 , 1, 2, 3, 4 , 5,
-			0 , 0 , 0 , 1, 2, 3, 4 , 5
-
-		};
+		
 	}
 
 	~Match3Graph() {
@@ -109,6 +98,11 @@ public:
 	void setNodesColors(std::vector<int> &levelNodes);
 
 	/*
+	/*getNodesColors
+	*/
+	std::vector<int>& getNodesColors();
+
+	/*
 	* swapNodes
 	* Check if node are swabale
 	*/
@@ -129,6 +123,8 @@ public:
 	* move the top point down
 	*/
 	void nodesGravityCheck(std::vector<int> markedNodes);
+
+	
 
 /*---------------------------------Private Function Section----------------------------------------------------------------*/
 private:

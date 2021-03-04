@@ -3,15 +3,50 @@
 //
 #include "pch.h"
 #include "../msvc/Match3Graph.cpp"
+
 namespace GraphTests {
 
 	class Match3GraphTest : public testing::Test {
 
-	public:
-		Match3Graph match3graph;
+
 
 	};
 
+
+	TEST(Match3GraphTests, WhenMarkedNodesShouldbeLinkedtoTheTopNodes) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			  0 ,  1 ,  2 ,  3 ,  4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 ,  10,  11 , 12 , 13 , 14 ,  15 ,
+			 16 , 17 ,  18 , 19 , 20 , 21 , 22 , 23 ,
+			 24 , 25 ,  26 , 27 ,  28 , 29 , 30 , 31 ,
+			 32 , 33 ,  34 , 35 ,  36 , 37 , 38 , 39 ,
+			 40 , 41 ,  42 , 43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 ,  50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
+		};
+
+		for (uint32_t i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+				
+		std::vector<int> removedNodes = { 1,9,17 };
+
+		match3graph.removeMatchedNodes(removedNodes);
+
+		match3graph.nodesGravityCheck(removedNodes);
+
+		colorNodes = match3graph.getNodesColors();
+
+		EXPECT_EQ(colorNodes[1], 25);
+		EXPECT_EQ(colorNodes[9], 33);
+		EXPECT_EQ(colorNodes[17], 41);
+	}
 
 	TEST(Match3GraphTests, WhenSwapTwoNodesAndNoForMatchingShouldRollBack) {
 
@@ -29,7 +64,7 @@ namespace GraphTests {
 			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
 		};
 
-		for (unsigned int i = 0; i < colorNodes.size(); i++) {
+		for (uint32_t i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
 
