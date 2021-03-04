@@ -13,6 +13,7 @@ namespace GraphTests {
 	};
 
 
+
 	TEST(Match3GraphTests, WhenSendingLevelwith_MatchedBeginEndMiddle_MatchPossiblityShouldRetrun4) {
 
 		Match3Graph match3graph;
@@ -168,6 +169,37 @@ namespace GraphTests {
 		EXPECT_NE(std::find(matchedVector[0].begin(), matchedVector[0].end(),18), matchedVector[0].end());
 		EXPECT_NE(std::find(matchedVector[0].begin(), matchedVector[0].end(), 26), matchedVector[0].end());
 		EXPECT_NE(std::find(matchedVector[0].begin(), matchedVector[0].end(), 34), matchedVector[0].end());
+
+	}
+
+
+	TEST(Match3GraphTests, WhenSendingLevelwith_AllMatched_MatchPossiblityShouldReturnNonRpeatedMatched) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
+			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
+			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
+			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
+			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
+			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
+			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
+			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0
+		};
+
+		for (int i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<std::vector<int>> matchedVector = match3graph.findMatchedNodes(0);
+
+
+		EXPECT_GE(matchedVector.size(), 20);
+
 
 	}
 	TEST(Match3GraphTests, WhenSendingLevelwith_No_MatchPossiblityShouldRetrun0) {
