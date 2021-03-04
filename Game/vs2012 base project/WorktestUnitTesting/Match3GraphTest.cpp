@@ -13,7 +13,191 @@ namespace GraphTests {
 	};
 
 
+	TEST(Match3GraphTests, WhenSendingLevelwith_MatchedBeginEndMiddle_MatchPossiblityShouldRetrun4) {
 
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			  6 ,  6  ,  6 ,  3 , 4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 , 10 , 11 , 12 , 13 , 14 ,	15 ,
+			 16 , 17 , /**/ 5 , /**/5 ,/**/ 5 , 21 , 22 , 23 ,
+			 24 , 25 ,/**/  5 , /**/0 , 28 , 29 , 30 , 31 ,
+			 32 , 33 , /**/ 5 , /**/0 , 36 , 37 , 38 , 39 ,
+			 40 , 41 , 42 ,	43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 , 58 , 59 , 60 , 0 , 0 , 0
+		};
+
+		for (int i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<std::vector<int>> matchedVector = match3graph.findMatchedNodes(0);
+
+
+
+		EXPECT_EQ(matchedVector.size(), 4);
+
+
+	}
+
+	TEST(Match3GraphTests, WhenSendingLevelwith_MatchedMiddleAndEnd_MatchPossiblityShouldRetrun3) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			  0 ,  1 ,  2 ,  3 , 4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 , 10 , 11 , 12 , 13 , 14 ,	15 ,
+			 16 , 17 , /**/ 5 , /**/5 ,/**/ 5 , 21 , 22 , 23 ,
+			 24 , 25 ,/**/  5 , /**/0 , 28 , 29 , 30 , 31 ,
+			 32 , 33 , /**/ 5 , /**/0 , 36 , 37 , 38 , 39 ,
+			 40 , 41 , 42 ,	43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 , 58 , 59 , 60 , 0 , 0 , 0
+		};
+
+		for (int i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<std::vector<int>> matchedVector = match3graph.findMatchedNodes(0);
+
+
+
+		EXPECT_EQ(matchedVector.size(), 3);
+
+
+	}
+
+	TEST(Match3GraphTests, WhenSendingLevelwith_CommonMatchedPoint_MatchPossiblityShouldRetrun2) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			  0 ,  1 ,  2 ,  3 , 4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 , 10 , 11 , 12 , 13 , 14 ,	15 ,
+			 16 , 17 , /**/ 5 , /**/5 ,/**/ 5 , 21 , 22 , 23 ,
+			 24 , 25 ,/**/  5 , /**/0 , 28 , 29 , 30 , 31 ,
+			 32 , 33 , /**/ 5 , /**/0 , 36 , 37 , 38 , 39 ,
+			 40 , 41 , 42 ,	43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
+		};
+
+		for (int i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<std::vector<int>> matchedVector = match3graph.findMatchedNodes(0);
+
+		std::vector<int> flattenVector;
+
+
+		EXPECT_EQ(matchedVector.size(), 2);
+
+
+	}
+
+	TEST(Match3GraphTests, WhenSendingLevelwith_2_MatchPossiblityShouldRetrun2) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			  0 ,  1 ,  2 ,  3 , 4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 , 10 , 11 , 12 , 13 , 14 ,	15 ,
+			 16 , 17 , /**/ 5 , /**/2 , 20 , 21 , 22 , 23 ,
+			 24 , 25 ,/**/  5 , /**/2 , 28 , 29 , 30 , 31 ,
+			 32 , 33 , /**/ 5 , /**/2 , 36 , 37 , 38 , 39 ,
+			 40 , 41 , 42 ,	43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
+		};
+
+		for (int i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<std::vector<int>> matchedVector = match3graph.findMatchedNodes(0);
+
+		std::vector<int> flattenVector;
+
+	
+		EXPECT_EQ(matchedVector.size(), 2);
+
+
+	}
+
+	TEST(Match3GraphTests, WhenSendingLevelwith_1_MatchPossiblityShouldRetrun1) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			  0 ,  1 ,  2 ,  3 , 4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 , 10 , 11 , 12 , 13 , 14 ,	15 ,
+			 16 , 17 , /**/ 5 , 19 , 20 , 21 , 22 , 23 ,
+			 24 , 25 ,/**/  5 , 27 , 28 , 29 , 30 , 31 ,
+			 32 , 33 , /**/ 5 , 35 , 36 , 37 , 38 , 39 ,
+			 40 , 41 , 42 ,	43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
+		};
+
+		for (int i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<std::vector<int>> matchedVector = match3graph.findMatchedNodes(0);
+
+
+		EXPECT_EQ(matchedVector.size(), 1);
+		EXPECT_NE(std::find(matchedVector[0].begin(), matchedVector[0].end(),18), matchedVector[0].end());
+		EXPECT_NE(std::find(matchedVector[0].begin(), matchedVector[0].end(), 26), matchedVector[0].end());
+		EXPECT_NE(std::find(matchedVector[0].begin(), matchedVector[0].end(), 34), matchedVector[0].end());
+
+	}
+	TEST(Match3GraphTests, WhenSendingLevelwith_No_MatchPossiblityShouldRetrun0) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes = 
+		{
+			  0 ,  1 ,  2 ,  3 , 4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 , 10 , 11 , 12 , 13 , 14 ,	15 ,
+			 16 , 17 , 18 , 19 , 20 , 21 , 22 , 23 ,
+			 24 , 25 , 26 , 27 , 28 , 29 , 30 , 31 ,
+			 32 , 33 , 34 , 35 , 36 , 37 , 38 , 39 , 
+			 40 , 41 , 42 ,	43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
+		};
+
+		for (int i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<std::vector<int >> matchedVector = match3graph.findMatchedNodes(0);
+
+		
+		EXPECT_EQ(matchedVector.size(), 0);
+
+	}
 	TEST(Match3GraphTests, WhenNodeId_0_MAXNodeNumberInRowShouldbe_7) {
 
 		Match3Graph match3graph;
@@ -62,16 +246,7 @@ namespace GraphTests {
 
 	}
 
-	TEST(Match3GraphTests, TestingDFS) {
 
-		Match3Graph match3graph;
-
-		for (int i = 0; i < GAME_MAX_CELLS; i++) {
-			match3graph.addNode(0, i);
-		}
-		match3graph.dfs(0);
-
-	}
 
 
 	TEST(Match3GraphTests, WhenNodeIdLessThan55ShouldhasTopNode) {

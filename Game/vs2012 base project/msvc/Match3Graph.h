@@ -23,8 +23,7 @@ public:
 		
 	Match3Graph() {
 		nodes = new std::map<int, std::set<int>>();
-		
-		colord = 
+		nodesColors =
 		{
 			0 , 0 , 0 , 1, 2, 3, 4 , 5,
 			0 , 0 , 0 , 1, 2, 3, 4 , 5,
@@ -84,20 +83,32 @@ public:
 	*/
 	int calculateMaxNodeIdPerCol(int nodeId);
 
-	std::vector<int> * findMatchesPoints(int nodeId);
-
 	/*
 	/* Check if the node has more Right Nodes
 	*/
 	bool nodeHasMoreRightNodes(int nodeId);
 
-
-
 	/*
 	/* Check if the node has more Right Nodes
 	*/
 	bool nodeHasMoreTopNodes(int nodeId);
-	void dfs(int nodeId);
+
+	/*
+	* findMatchedNodes
+	* @param int nodeId 
+	* return a vector of vector<vector> cotain all nodes to be delted
+	* each vector will be used by specific command
+	*/
+	std::vector<std::vector<int>> findMatchedNodes(int nodeId);
+
+
+	/*
+	/*setNodesColors
+	* @param std::vector<int> &levelNodes
+	*/
+	void setNodesColors(std::vector<int> &levelNodes);
+
+
 /*---------------------------------Private Function Section----------------------------------------------------------------*/
 private:
 	/*
@@ -110,21 +121,24 @@ private:
 	*/
 	void connectNodeById(int nodeId);
 
-	/*
-	* dfs 
-	* Depth first search for the Graph
-	*/
 	
-
 
 
 /*---------------------------------Private Variable Section----------------------------------------------------------------*/
 
 private:
-	std::map<int, std::set<int>> *nodes; //Adjacency list of Nodes
-	std::vector<int> colord; // Ball List
-	
+	std::map<int, std::set<int>> *nodes; //Adjacency list of Nodes to describe the relation between nodes 
 
-	void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<bool>& vVisited, std::string& newstring, std::vector<std::vector<int>> &options);
+	std::vector<int> nodesColors; // nodes Colors 
+	
+	/*
+	* dfsFindAllMatches 
+	/* depth First Search:move through all nodes and find all matches 
+	* @param int nodeId
+	/*@param std::vector<bool>& hVisited horizontal visited points 
+	* @param std::vector<bool>& vVisited 
+	* @param std::vector<std::vector<int>> &matched vector of matached 
+	*/
+	void dfsFindAllMatches(int nodeId, std::vector<bool>& hVisited, std::vector<bool>& vVisited, std::vector<std::vector<int>> &matched);
 };
 

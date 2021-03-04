@@ -52,25 +52,29 @@ int Match3Graph::calculateMaxNodeIdPerCol(int nodeId)
 }
 
 
-void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<bool>& vVisited, std::string& newstring, std::vector<std::vector<int>>& options) {
+void Match3Graph::dfsFindAllMatches(int nodeId, std::vector<bool>& hVisited, std::vector<bool>& vVisited, std::vector<std::vector<int>>& matched) {
 
-	newstring += ", " + std::to_string(nodeId);
-	std::cout << nodeId << "\n";
 	
-
-	std::vector<int> possibleHorizonatlMatches;
-	std::vector<int> possibleVerticalMatches;
+	std::vector<int> possibleHorizonatlMatches; // Horizonatl matched vector
+	std::vector<int> possibleVerticalMatches; // vertical matched vector
 	
+	/*---------------------------------- find all Horizonatl Points  ---------------------------------------------------------*/
+	/*
+	* ----|---|-----
+	* ----| Z |-----
+	* ----|---|-----
+	*/
 	if (!hVisited[nodeId]){
 		int maxNodeIdInRow = calculateMaxNodeIdPerRow(nodeId);
 
-		possibleHorizonatlMatches.push_back(colord[nodeId]);
-		for (int i = nodeId + 1; i < maxNodeIdInRow; i++){ 
+		possibleHorizonatlMatches.push_back(nodeId);
 
-			int lastAddedColor = possibleHorizonatlMatches.at(possibleHorizonatlMatches.size() - 1);
-			if (lastAddedColor == colord[i]){
+		for (int i = nodeId + 1; i <= maxNodeIdInRow; i++){ 
 
-				possibleHorizonatlMatches.push_back(nodeId);
+			int lastAddNode = possibleHorizonatlMatches.at(possibleHorizonatlMatches.size() - 1);
+			if (nodesColors[lastAddNode] == nodesColors[i]){
+
+				possibleHorizonatlMatches.push_back(i);
 
 			}else {
 				break;
@@ -83,23 +87,28 @@ void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<b
 			{
 				hVisited[visitedNode] = true;
 			}
-			options.push_back(std::move(possibleHorizonatlMatches));
+			matched.push_back(std::move(possibleHorizonatlMatches));
 		}
 	
 		hVisited[nodeId] = true;
 	}
+
+
+
+	/*---------------------------------- find all Vertical Matched ---------------------------------------------------------*/
+
 	
 	if (!vVisited[nodeId]) {
 
 		int maxNodeIdInCol = calculateMaxNodeIdPerCol(nodeId);
 		possibleVerticalMatches.push_back(nodeId);
 
-		for (int j = nodeId + GAME_COL_MAX ; j < maxNodeIdInCol; j = j + GAME_COL_MAX){
+		for (int j = nodeId + GAME_COL_MAX ; j <= maxNodeIdInCol; j = j + GAME_COL_MAX){
 
-			int lastAddedColor = possibleVerticalMatches.at(possibleVerticalMatches.size() - 1);
-			if (lastAddedColor == colord[j]) {
+			int lastAddNode = possibleVerticalMatches.at(possibleVerticalMatches.size() - 1);
+			if (nodesColors[lastAddNode] == nodesColors[j]) {
 
-				possibleVerticalMatches.push_back(nodeId);
+				possibleVerticalMatches.push_back(j);
 
 			}
 			else {
@@ -116,11 +125,13 @@ void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<b
 				vVisited[visitedNode] = true;
 			}
 
-			options.push_back(std::move(possibleVerticalMatches));
+			matched.push_back(std::move(possibleVerticalMatches));
 		}
 		vVisited[nodeId] = true;
 	}
 
+
+	/*---------------------------------- Depth first Search -------------------------------------*/
 
 	auto it = nodes->find(nodeId);
 	if (it != nodes->end()) {
@@ -128,8 +139,9 @@ void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<b
 		
 		for each (int neighbour in neighbours)
 		{
+			/* Point need to be checked*/
 			if (!hVisited[neighbour] || !vVisited[neighbour]) {
-				testDfs(neighbour, hVisited,vVisited, newstring, options);
+				dfsFindAllMatches(neighbour, hVisited,vVisited, matched);
 			}
 
 		}
@@ -140,7 +152,7 @@ void Match3Graph::testDfs(int nodeId, std::vector<bool>& hVisited, std::vector<b
 
 }
 
-void Match3Graph::dfs(int nodeId)
+std::vector<std::vector<int>> Match3Graph::findMatchedNodes(int nodeId)
 {
 	std::string log = "";
 	std::vector<bool> vVisited(GAME_MAX_CELLS, false);
@@ -148,23 +160,12 @@ void Match3Graph::dfs(int nodeId)
 
 	std::vector<std::vector<int>> options;
 
-	testDfs(nodeId, vVisited, HVisited, log, options);
-
-	std::cout << "Finished" << "\n";
+	dfsFindAllMatches(nodeId, vVisited, HVisited, options);
 
 
+	return std::move(options);
 }
 
-
-
-std::vector<int> * Match3Graph::findMatchesPoints(int nodeId)
-{
-	if (!nodeHasMoreRightNodes(nodeId))
-		return nullptr;
-
-
-	return nullptr;
-}
 
 
 bool Match3Graph::nodeHasMoreRightNodes(int nodeId)
@@ -226,6 +227,13 @@ void Match3Graph::connectNodeById(int nodeId)
 
 
 	nodes->insert(std::pair<int,std::set<int>>(nodeId, std::move(connectedEdges)));
+
+}
+
+
+void Match3Graph::setNodesColors(std::vector<int>& levelNodes) {
+
+	this->nodesColors = levelNodes;
 
 }
 
