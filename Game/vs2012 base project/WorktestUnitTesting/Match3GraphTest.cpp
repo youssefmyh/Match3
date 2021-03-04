@@ -30,7 +30,7 @@ namespace GraphTests {
 			 56 , 57 , 58 , 59 , 60 , 0 , 0 , 0
 		};
 
-		for (int i = 0; i < colorNodes.size(); i++) {
+		for (unsigned int i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
 
@@ -61,7 +61,7 @@ namespace GraphTests {
 			 56 , 57 , 58 , 59 , 60 , 0 , 0 , 0
 		};
 
-		for (int i = 0; i < colorNodes.size(); i++) {
+		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
 
@@ -92,7 +92,7 @@ namespace GraphTests {
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
 
-		for (int i = 0; i < colorNodes.size(); i++) {
+		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
 
@@ -124,7 +124,7 @@ namespace GraphTests {
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
 
-		for (int i = 0; i < colorNodes.size(); i++) {
+		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
 
@@ -156,7 +156,7 @@ namespace GraphTests {
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
 
-		for (int i = 0; i < colorNodes.size(); i++) {
+		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
 
@@ -189,7 +189,7 @@ namespace GraphTests {
 			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0
 		};
 
-		for (int i = 0; i < colorNodes.size(); i++) {
+		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
 
@@ -197,9 +197,9 @@ namespace GraphTests {
 
 		std::vector<std::vector<int>> matchedVector = match3graph.findMatchedNodes(0);
 
-
-		EXPECT_GE(matchedVector.size(), 20);
-
+		int matchedSize = matchedVector.size();
+		
+		EXPECT_LE(matchedSize, 20);
 
 	}
 	TEST(Match3GraphTests, WhenSendingLevelwith_No_MatchPossiblityShouldRetrun0) {
@@ -218,7 +218,7 @@ namespace GraphTests {
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
 
-		for (int i = 0; i < colorNodes.size(); i++) {
+		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
 

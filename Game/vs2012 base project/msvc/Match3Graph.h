@@ -122,14 +122,19 @@ private:
 	void connectNodeById(int nodeId);
 
 	
-
+	/*
+	* isNodesSwapable
+	* Check if node ara swabale 
+	*/
+	bool isNodesSwappable(int first, int second);
 
 /*---------------------------------Private Variable Section----------------------------------------------------------------*/
 
 private:
 	std::map<int, std::set<int>> *nodes; //Adjacency list of Nodes to describe the relation between nodes 
 
-	std::vector<int> nodesColors; // nodes Colors 
+	std::vector<int> nodesColors; // nodes Colors
+
 	
 	/*
 	* dfsFindAllMatches 
