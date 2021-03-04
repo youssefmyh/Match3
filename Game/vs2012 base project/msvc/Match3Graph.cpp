@@ -155,7 +155,6 @@ void Match3Graph::dfsFindAllMatches(int nodeId, std::vector<bool>& hVisited, std
 
 std::vector<std::vector<int>> Match3Graph::findMatchedNodes(int nodeId)
 {
-	std::string log = "";
 	std::vector<bool> vVisited(GAME_MAX_CELLS, false);
 	std::vector<bool> HVisited(GAME_MAX_CELLS, false);
 
