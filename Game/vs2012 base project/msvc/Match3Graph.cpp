@@ -257,3 +257,21 @@ std::vector<std::vector<int>> Match3Graph::swapNodes(int first, int second) {
 	return std::move(allOptions);
 
 }
+
+void Match3Graph::removeMatchedNodes(std::vector<int> markedNodes)
+{
+
+	for (unsigned int i = 0; i < markedNodes.size(); i++) {
+		
+		nodesColors[markedNodes[i]] = -1; // Marked removed nodes to be -1 
+	}
+
+
+}
+
+void Match3Graph::nodesGravityCheck(std::vector<int> markedNodes)
+{
+
+
+
+}

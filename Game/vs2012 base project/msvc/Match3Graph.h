@@ -114,6 +114,22 @@ public:
 	*/
 	std::vector<std::vector<int>> swapNodes(int first, int second);
 
+
+	/*
+	* removeMatchedNodes
+	* Marked the removed nodes to be -1 
+	* then we will link it with next noded in the col
+	*/
+	void removeMatchedNodes(std::vector<int> nodes);
+
+
+	/*
+	* nodesGravityCheck
+	* if color vector has -1 
+	* move the top point down
+	*/
+	void nodesGravityCheck(std::vector<int> markedNodes);
+
 /*---------------------------------Private Function Section----------------------------------------------------------------*/
 private:
 	/*
