@@ -65,6 +65,7 @@ void Match3Graph::dfsFindAllMatches(int nodeId, std::vector<bool>& hVisited, std
 	* ----|---|-----
 	*/
 	if (!hVisited[nodeId]){
+
 		int maxNodeIdInRow = calculateMaxNodeIdPerRow(nodeId);
 
 		possibleHorizonatlMatches.push_back(nodeId);
@@ -238,3 +239,22 @@ void Match3Graph::setNodesColors(std::vector<int>& levelNodes) {
 }
 
 
+std::vector<std::vector<int>> Match3Graph::swapNodes(int first, int second) {
+
+	int firstNode = nodesColors[first];
+	int secondNode = nodesColors[second];
+
+	nodesColors[first] = secondNode;
+	nodesColors[second] = firstNode;
+
+	std::vector<std::vector<int>> allOptions = findMatchedNodes(0);
+
+	if (allOptions.size() <= 0)
+	{
+		nodesColors[first] = firstNode;
+		nodesColors[second] = secondNode;
+	}
+
+	return std::move(allOptions);
+
+}

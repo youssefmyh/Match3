@@ -108,6 +108,11 @@ public:
 	*/
 	void setNodesColors(std::vector<int> &levelNodes);
 
+	/*
+	* swapNodes
+	* Check if node are swabale
+	*/
+	std::vector<std::vector<int>> swapNodes(int first, int second);
 
 /*---------------------------------Private Function Section----------------------------------------------------------------*/
 private:
@@ -122,11 +127,7 @@ private:
 	void connectNodeById(int nodeId);
 
 	
-	/*
-	* isNodesSwapable
-	* Check if node ara swabale 
-	*/
-	bool isNodesSwappable(int first, int second);
+	
 
 /*---------------------------------Private Variable Section----------------------------------------------------------------*/
 
