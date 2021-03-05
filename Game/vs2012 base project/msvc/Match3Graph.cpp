@@ -283,7 +283,8 @@ void Match3Graph::nodesGravityCheck(std::vector<int> &markedNodes)
 		return;
 	
 	uint32_t lastNodeIndex = markedNodes.size() - 1;
-	if (markedNodes[lastNodeIndex] + GAME_COL_MAX > nodesColors.size() - 1) // back point to move all points to up
+	uint32_t maxNodePerCol = markedNodes[lastNodeIndex] + GAME_COL_MAX;
+	if (maxNodePerCol > nodesColors.size() - 1) // back point to move all points to up
 		return;
 	
 

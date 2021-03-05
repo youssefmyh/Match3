@@ -14,7 +14,7 @@ void JewelryItem::draw(King::Engine& engine)
 
 }
 
-void JewelryItem::move(float x, float y)
+void JewelryItem::move(int x, int y)
 {
 	mToX = x;
 	mToY = y;

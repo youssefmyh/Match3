@@ -14,6 +14,6 @@ void Board::draw(King::Engine& engine)
 
 }
 
-void Board::move(float x, float y)
+void Board::move(int x, int y)
 {
 }

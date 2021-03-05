@@ -7,14 +7,14 @@
 #include "Match3Settings.h"
 #include <vector>
 #include <string>
-struct Match3Node {
+/*struct Match3Node {
 
 	Match3Node(int id, std::set<int> &connectedNodes) : nodeId(id),adjacents(connectedNodes){}
 	int nodeId;
 	int color;
 	std::set<int> adjacents;
 
-};
+};*/
 class Match3Graph
 {
 

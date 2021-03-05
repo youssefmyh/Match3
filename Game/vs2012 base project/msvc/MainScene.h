@@ -12,7 +12,6 @@ public:
 		, mYellowDiamondY(100.0f) 
 	{
 		mMatch3Graph = new Match3Graph();
-		mewelryItem = new JewelryItem(1, 100, 200);
 	}
 
 	
@@ -36,7 +35,6 @@ public:
 protected:
 	King::Engine mEngine;
 	Match3Graph* mMatch3Graph;
-	JewelryItem *mewelryItem;
 	float mRotation;
 	float mYellowDiamondX;
 	float mYellowDiamondY;

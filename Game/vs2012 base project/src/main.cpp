@@ -1,4 +1,3 @@
-#define GLM_FORCE_RADIANS 
 #define _CRTDBG_MAP_ALLOC
 
 #include <king/Engine.h>

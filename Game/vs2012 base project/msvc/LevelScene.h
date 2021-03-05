@@ -19,6 +19,13 @@ public:
 		load();
 	}
 
+	~LevelScene() {
+
+		delete board;
+		delete mBackground;
+
+	}
+
 
 	virtual void load();
 	virtual void end();

@@ -15,21 +15,22 @@ void LevelScene::load()
 
 	int textureWidth = mEngine.GetTextureWidth(King::Engine::Texture::TEXTURE_BLUE);
 	int textureHeight = mEngine.GetTextureWidth(King::Engine::Texture::TEXTURE_BLUE);
-	int boardXLocation = 350;
-	int boardYLocation = 125;
+	int boardXLocation = std::get<0>(mBackground->getBoardLocation());
+	int boardYLocation = std::get<1>(mBackground->getBoardLocation());
+
 	for (uint32_t i = 0;  i< GAME_MAX_CELLS;  i++)
 	{
 		std::tuple<int,int> location = mMatch3Graph->findNodeLocationById(i);
-		float row = std::get<0>(location);
-		float col = std::get<1>(location);
-		float x = boardXLocation + col * textureHeight;
-		float y = boardYLocation + row * textureWidth;
+		int row = std::get<0>(location);
+		int col = std::get<1>(location);
+		int x = boardXLocation + col * textureHeight;
+		int y = boardYLocation + row * textureWidth;
 
 		JewelryItem *jItem = new JewelryItem(mlevelColors[i]+1, x, y);
 		jewelers.push_back(jItem);
 	}
 
-	board = new Board(0, 0, 200, std::move(jewelers));
+	board = new Board(0, 0, 0, std::move(jewelers), textureWidth, textureHeight);
 
 }
 
@@ -49,7 +50,7 @@ void LevelScene::Update() {
 
 	if (mEngine.GetMouseButtonDown()) {
 
-		mewelryItem->move(mEngine.GetMouseX(), mEngine.GetMouseY());
+	//	mewelryItem->move(mEngine.GetMouseX(), mEngine.GetMouseY());
 	//	mYellowDiamondX = mEngine.GetMouseX();
 	//	mYellowDiamondY = mEngine.GetMouseY();
 	}

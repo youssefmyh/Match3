@@ -12,12 +12,12 @@ void BackgroundItem::draw(King::Engine& engine)
 
 }
 
-void BackgroundItem::move(float x, float y)
+void BackgroundItem::move(int x, int y)
 {
 	
 }
 
 std::tuple<int, int> BackgroundItem::getBoardLocation()
 {
-	return std::tuple<int, int>(200,200);
+	return std::tuple<int, int>(350,125);
 }
