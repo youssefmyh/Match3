@@ -82,6 +82,8 @@
     <ClCompile Include="..\external\include\king\SdlSurface.cpp" />
     <ClCompile Include="..\external\include\king\SdlWindow.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="BackgroundItem.cpp" />
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="JewelryItem.cpp" />
     <ClCompile Include="LevelRepository.cpp" />
     <ClCompile Include="LevelScene.cpp" />
@@ -96,6 +98,8 @@
     <ClInclude Include="..\external\include\king\SdlSurface.h" />
     <ClInclude Include="..\external\include\king\SdlWindow.h" />
     <ClInclude Include="..\external\include\king\Updater.h" />
+    <ClInclude Include="BackgroundItem.h" />
+    <ClInclude Include="Board.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="JewelryItem.h" />

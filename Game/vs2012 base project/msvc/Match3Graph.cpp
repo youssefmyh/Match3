@@ -282,7 +282,7 @@ void Match3Graph::nodesGravityCheck(std::vector<int> &markedNodes)
 	if (markedNodes.size()  < GAME_MINMUM_MATCHED ) // minum matched number 3 in our case
 		return;
 	
-	int lastNodeIndex = markedNodes.size() - 1;
+	uint32_t lastNodeIndex = markedNodes.size() - 1;
 	if (markedNodes[lastNodeIndex] + GAME_COL_MAX > nodesColors.size() - 1) // back point to move all points to up
 		return;
 	

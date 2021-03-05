@@ -7,8 +7,30 @@ void LevelScene::Start() {
 
 void LevelScene::load()
 {
-	
+	mBackground = new BackgroundItem(0, 0, 0);
+	mlevelColors = LevelRepository::findLevelById(1);
 	mMatch3Graph->setNodesColors(mlevelColors);
+
+	std::vector<Item*> jewelers;
+
+	int textureWidth = mEngine.GetTextureWidth(King::Engine::Texture::TEXTURE_BLUE);
+	int textureHeight = mEngine.GetTextureWidth(King::Engine::Texture::TEXTURE_BLUE);
+	int boardXLocation = 350;
+	int boardYLocation = 125;
+	for (uint32_t i = 0;  i< GAME_MAX_CELLS;  i++)
+	{
+		std::tuple<int,int> location = mMatch3Graph->findNodeLocationById(i);
+		float row = std::get<0>(location);
+		float col = std::get<1>(location);
+		float x = boardXLocation + col * textureHeight;
+		float y = boardYLocation + row * textureWidth;
+
+		JewelryItem *jItem = new JewelryItem(mlevelColors[i]+1, x, y);
+		jewelers.push_back(jItem);
+	}
+
+	board = new Board(0, 0, 200, std::move(jewelers));
+
 }
 
 void LevelScene::end()
@@ -21,8 +43,9 @@ void LevelScene::won()
 
 void LevelScene::Update() {
 
-	mewelryItem->update();
-	mewelryItem->draw(mEngine);
+	mBackground->draw(mEngine);
+	board->draw(mEngine);
+
 
 	if (mEngine.GetMouseButtonDown()) {
 

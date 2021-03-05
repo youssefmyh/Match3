@@ -8,6 +8,9 @@
 */
 #include "MainScene.h"
 #include "Level.h"
+#include "LevelRepository.h"
+#include "Board.h"
+#include "BackgroundItem.h"
 class LevelScene: public MainScene,public Level
 {
 public:
@@ -26,5 +29,9 @@ public:
 
 protected:
 	std::vector<int> mlevelColors;
+private:
+	Board* board;
+	BackgroundItem *mBackground;
+
 };
 

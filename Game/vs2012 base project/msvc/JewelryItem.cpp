@@ -10,7 +10,7 @@ void JewelryItem::update()
 
 void JewelryItem::draw(King::Engine& engine)
 {
-	engine.Render(King::Engine::TEXTURE_GREEN, mX, mY);
+	engine.Render(mTexture, mX, mY);
 
 }
 

@@ -87,6 +87,12 @@
     <ClCompile Include="JewelryItem.cpp">
       <Filter>Source Files\view\components</Filter>
     </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Source Files\view\components</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundItem.cpp">
+      <Filter>Source Files\view\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\include\king\Engine.h">
@@ -135,6 +141,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="JewelryItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
