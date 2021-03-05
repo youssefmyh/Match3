@@ -5,8 +5,32 @@ void LevelScene::Start() {
 	mEngine.Start(*this);
 }
 
+void LevelScene::load()
+{
+	
+	mMatch3Graph->setNodesColors(mlevelColors);
+}
+
+void LevelScene::end()
+{
+}
+
+void LevelScene::won()
+{
+}
+
 void LevelScene::Update() {
-	mEngine.Render(King::Engine::TEXTURE_GREEN, 650.0f, 100.0f);
+
+	mewelryItem->update();
+	mewelryItem->draw(mEngine);
+
+	if (mEngine.GetMouseButtonDown()) {
+
+		mewelryItem->move(mEngine.GetMouseX(), mEngine.GetMouseY());
+	//	mYellowDiamondX = mEngine.GetMouseX();
+	//	mYellowDiamondY = mEngine.GetMouseY();
+	}
+/*	mEngine.Render(King::Engine::TEXTURE_GREEN, 650.0f, 100.0f);
 	mEngine.Render(King::Engine::TEXTURE_RED, 100.0f, 450.0f);
 	mEngine.Render(King::Engine::TEXTURE_BLUE, 650.0f, 450.0f);
 
@@ -19,10 +43,11 @@ void LevelScene::Update() {
 	mEngine.Write(text, mEngine.GetWidth() / 2.0f, mEngine.GetHeight() / 2.0f, mRotation * 2.5f);
 
 	if (mEngine.GetMouseButtonDown()) {
+
 		mYellowDiamondX = mEngine.GetMouseX();
 		mYellowDiamondY = mEngine.GetMouseY();
 	}
 	mEngine.Render(King::Engine::TEXTURE_YELLOW, mYellowDiamondX, mYellowDiamondY);
 	mEngine.Write("Click to", mYellowDiamondX, mYellowDiamondY + 0.0f);
-	mEngine.Write("move me!", mYellowDiamondX, mYellowDiamondY + 70.0f);
+	mEngine.Write("move me!", mYellowDiamondX, mYellowDiamondY + 70.0f);*/
 }
