@@ -4,6 +4,13 @@
 #include "Match3Settings.h"
 #include "Match3Graph.h"
 
+enum Direction {
+
+	UP,DOWN,RIGHT,LEFT
+
+
+};
+
 class Board :public Item
 {
 public:
@@ -26,13 +33,14 @@ public:
 	void update(King::Engine& engine);
 	void move(int x, int y);
 	void setLocation(int x, int y);
-
+	int findItemIdByLocation(float mouseX, float mouseY);
 private:
 	std::vector<Item*>  levelColoredItems;
 	bool isToucheWithinBoard(float x, float y);
 	int mCellHeight;
 	int mCellWidth;
 	int mDraggedItemIndex;
-
+	float mStartMouseX;
+	float mStartMouseY;
 };
 

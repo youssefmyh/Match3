@@ -16,6 +16,16 @@ public:
 		return mItemId;
 	}
 
+	int getX() const {
+		
+		return mX;
+	}
+
+	int getY() const {
+		
+		return mY;
+	}
+
 protected:
 	int mItemId;
 	King::Engine::Texture mTexture;

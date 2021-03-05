@@ -21,5 +21,5 @@ void BackgroundItem::setLocation(int x, int y)
 
 std::tuple<int, int> BackgroundItem::getBoardLocation()
 {
-	return std::tuple<int, int>(350,125);
+	return std::tuple<int, int>(350,375);
 }
