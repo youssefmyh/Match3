@@ -118,11 +118,11 @@ public:
 
 
 	/*
-	* nodesGravityCheck
+	* nodesGravityCheck 
 	* if color vector has -1 
-	* move the top point down
+	* move the top point down and make sure to init the level with sufficient items
 	*/
-	void nodesGravityCheck(std::vector<int> markedNodes);
+	void nodesGravityCheck(std::vector<int> &markedNodes);
 
 	
 

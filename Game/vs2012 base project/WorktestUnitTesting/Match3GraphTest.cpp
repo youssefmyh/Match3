@@ -13,6 +13,121 @@ namespace GraphTests {
 	};
 
 
+	TEST(Match3GraphTests, WhenMarkedNodesIntheLastRowShouldbeStayed_Minus_1) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			  0 ,  1 ,  2 ,  3 ,  4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 ,  10,  11 , 12 , 13 , 14 ,  15 ,
+			 16 , 17 ,  18 , 19 , 20 , 21 , 22 , 23 ,
+			 24 , 25 ,  26 , 27 ,  28 , 29 , 30 , 31 ,
+			 32 , 33 ,  34 , 35 ,  36 , 37 , 38 , 39 ,
+			 40 , 41 ,  42 , 43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 ,  50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
+		};
+
+		for (uint32_t i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<int> removedNodes = { 56,57,58,59,60,61,62,63 };
+
+		match3graph.removeMatchedNodes(removedNodes);
+
+		match3graph.nodesGravityCheck(removedNodes);
+
+		colorNodes = match3graph.getNodesColors();
+
+		EXPECT_EQ(colorNodes[56], -1);
+		EXPECT_EQ(colorNodes[57], -1);
+		EXPECT_EQ(colorNodes[58], -1);
+		EXPECT_EQ(colorNodes[59], -1);
+		EXPECT_EQ(colorNodes[60], -1);
+		EXPECT_EQ(colorNodes[61], -1);
+		EXPECT_EQ(colorNodes[62], -1);
+		EXPECT_EQ(colorNodes[63], -1);
+	}
+
+	TEST(Match3GraphTests, WhenMarkedNodesIntheFirstRowShouldbeLinkedtoTheTopNodes) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			  0 ,  1 ,  2 ,  3 ,  4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 ,  10,  11 , 12 , 13 , 14 ,  15 ,
+			 16 , 17 ,  18 , 19 , 20 , 21 , 22 , 23 ,
+			 24 , 25 ,  26 , 27 ,  28 , 29 , 30 , 31 ,
+			 32 , 33 ,  34 , 35 ,  36 , 37 , 38 , 39 ,
+			 40 , 41 ,  42 , 43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 ,  50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
+		};
+
+		for (uint32_t i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<int> removedNodes = { 0,1,2,3,4,5,6,7 };
+
+		match3graph.removeMatchedNodes(removedNodes);
+
+		match3graph.nodesGravityCheck(removedNodes);
+
+		colorNodes = match3graph.getNodesColors();
+
+		EXPECT_EQ(colorNodes[0], 8);
+		EXPECT_EQ(colorNodes[1], 9);
+		EXPECT_EQ(colorNodes[2], 10);
+		EXPECT_EQ(colorNodes[3], 11);
+		EXPECT_EQ(colorNodes[4], 12);
+		EXPECT_EQ(colorNodes[5], 13);
+		EXPECT_EQ(colorNodes[6], 14);
+		EXPECT_EQ(colorNodes[7], 15);
+	}
+	TEST(Match3GraphTests, WhenMarkedNodesIntheSameRowShouldbeLinkedtoTheTopNodes) {
+
+		Match3Graph match3graph;
+
+		std::vector<int> colorNodes =
+		{
+			  0 ,  1 ,  2 ,  3 ,  4  ,  5 ,  6 ,  7 ,
+			  8 ,  9 ,  10,  11 , 12 , 13 , 14 ,  15 ,
+			 16 , 17 ,  18 , 19 , 20 , 21 , 22 , 23 ,
+			 24 , 25 ,  26 , 27 ,  28 , 29 , 30 , 31 ,
+			 32 , 33 ,  34 , 35 ,  36 , 37 , 38 , 39 ,
+			 40 , 41 ,  42 , 43 , 44 , 45 , 46 , 47 ,
+			 48 , 49 ,  50 , 51 , 52 , 53 , 54 , 55 ,
+			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
+		};
+
+		for (uint32_t i = 0; i < colorNodes.size(); i++) {
+			match3graph.addNode(colorNodes[i], i);
+		}
+
+		match3graph.setNodesColors(colorNodes);
+
+		std::vector<int> removedNodes = { 17,18,19,20,21 };
+
+		match3graph.removeMatchedNodes(removedNodes);
+
+		match3graph.nodesGravityCheck(removedNodes);
+
+		colorNodes = match3graph.getNodesColors();
+
+		EXPECT_EQ(colorNodes[17], 25);
+		EXPECT_EQ(colorNodes[18], 26);
+		EXPECT_EQ(colorNodes[19], 27);
+		EXPECT_EQ(colorNodes[20], 28);
+		EXPECT_EQ(colorNodes[21], 29);
+	}
 	TEST(Match3GraphTests, WhenMarkedNodesShouldbeLinkedtoTheTopNodes) {
 
 		Match3Graph match3graph;

@@ -272,22 +272,36 @@ void Match3Graph::removeMatchedNodes(std::vector<int> markedNodes){
 
 }
 
-void Match3Graph::nodesGravityCheck(std::vector<int> markedNodes)
+void Match3Graph::nodesGravityCheck(std::vector<int> &markedNodes)
 {
 
+	
 	bool isVertical = false;
 	bool isHorizontal = false;
 
 	if (markedNodes.size()  < GAME_MINMUM_MATCHED ) // minum matched number 3 in our case
 		return;
+	
+	int lastNodeIndex = markedNodes.size() - 1;
+	if (markedNodes[lastNodeIndex] + GAME_COL_MAX > nodesColors.size() - 1) // back point to move all points to up
+		return;
+	
 
-	if (markedNodes[0] == markedNodes[1] + 1)
+
+	if (markedNodes[0] == markedNodes[1] - 1)
 	{
 		isHorizontal = true;
 	}
 	else {
+		// return point needed only in vertical matches
 		isVertical = true;
+
+		uint32_t maxNodeForCol = markedNodes[lastNodeIndex] + markedNodes.size() * GAME_COL_MAX;
+		if (maxNodeForCol > nodesColors.size() - 1) // back point to move all points to up
+			return;
+
 	}
+
 
 	if (isVertical){
 		
@@ -305,7 +319,7 @@ void Match3Graph::nodesGravityCheck(std::vector<int> markedNodes)
 				if (nodeTobeMoved < nodesColors.size()) {
 
 					nodesColors[removedNodeId] = nodesColors[nodeTobeMoved];
-					
+					markedNodes[col] = nodeTobeMoved;
 				}
 				else {
 
@@ -319,16 +333,16 @@ void Match3Graph::nodesGravityCheck(std::vector<int> markedNodes)
 	}
 	else {
 	
-		for (int row = markedNodes.size() - 1; row >= 0; row--)
-		{
+		for (int row = markedNodes.size() - 1; row >= 0; row--){
 			int removedNodeId = markedNodes[row];
 			int nodeColor = nodesColors[removedNodeId];
 			if (nodeColor == -1) {
 
-				uint32_t nodeTobeMoved = removedNodeId * GAME_COL_MAX;
+				uint32_t nodeTobeMoved = removedNodeId + GAME_COL_MAX;
 
 				if (nodeTobeMoved < nodesColors.size()) {
 					nodesColors[removedNodeId] = nodesColors[nodeTobeMoved];
+					markedNodes[row] = nodeTobeMoved;
 				}
 				else {
 					nodesColors[removedNodeId] = rand() % 5;
@@ -342,6 +356,6 @@ void Match3Graph::nodesGravityCheck(std::vector<int> markedNodes)
 	}
 
 	
-
+	nodesGravityCheck(markedNodes); // make sure all nodes to move up
 
 }
