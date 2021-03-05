@@ -30,7 +30,7 @@ void LevelScene::load()
 		jewelers.push_back(jItem);
 	}
 
-	board = new Board(0, 0, 0, std::move(jewelers), textureWidth, textureHeight);
+	board = new Board(0, boardXLocation , boardYLocation , std::move(jewelers), textureWidth, textureHeight);
 
 }
 
@@ -44,8 +44,8 @@ void LevelScene::won()
 
 void LevelScene::Update() {
 
-	mBackground->draw(mEngine);
-	board->draw(mEngine);
+	mBackground->update(mEngine);
+	board->update(mEngine);
 
 
 	if (mEngine.GetMouseButtonDown()) {

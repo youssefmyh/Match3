@@ -6,10 +6,16 @@ class Item {
 public:
 	
 	Item(int itemId,int x ,int y) :mTexture((King::Engine::Texture)itemId),mItemId(itemId), mX(x),mY(y),mToX(x), mToY(y) {}
-	virtual void update() = 0;
-	virtual void draw(King::Engine& engine) = 0;
+	virtual void update(King::Engine& engine) = 0;
+	//virtual void draw(King::Engine& engine) = 0;
 	virtual void move(int x , int y) = 0;
-	
+	virtual void setLocation(int x, int y) = 0;
+
+	int getItemId() const {
+		
+		return mItemId;
+	}
+
 protected:
 	int mItemId;
 	King::Engine::Texture mTexture;

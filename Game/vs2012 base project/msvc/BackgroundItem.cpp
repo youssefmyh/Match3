@@ -1,20 +1,22 @@
 #include "BackgroundItem.h"
 
-void BackgroundItem::update()
+void BackgroundItem::update(King::Engine& engine)
 {
 	
-
-}
-
-void BackgroundItem::draw(King::Engine& engine)
-{
 	engine.Render(mTexture, mX, mY);
 
 }
 
+
 void BackgroundItem::move(int x, int y)
 {
 	
+}
+
+void BackgroundItem::setLocation(int x, int y)
+{
+	mX = x;
+	mY = y;
 }
 
 std::tuple<int, int> BackgroundItem::getBoardLocation()

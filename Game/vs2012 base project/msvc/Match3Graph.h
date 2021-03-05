@@ -51,7 +51,7 @@ public:
 	* find Node Location By Id 
 	* @param Node Id from 0 --> MAX_COL
 	*/
-	std::tuple<int, int> findNodeLocationById(int nodeId);
+	static std::tuple<int, int> findNodeLocationById(int nodeId);
 	
 	/*
 	* GgetNodeset 
