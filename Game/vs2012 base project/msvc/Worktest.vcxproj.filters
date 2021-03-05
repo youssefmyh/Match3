@@ -34,7 +34,7 @@
     <Filter Include="Source Files\components">
       <UniqueIdentifier>{748621f7-24e1-4d82-a5ed-f9d3d3b9245a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\logic">
+    <Filter Include="Source Files\graphlogic">
       <UniqueIdentifier>{ad29c6ee-4f19-4ec7-b453-05bfc83fb019}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -61,7 +61,13 @@
       <Filter>Source Files\kinglib</Filter>
     </ClCompile>
     <ClCompile Include="Match3Graph.cpp">
-      <Filter>Source Files\logic</Filter>
+      <Filter>Source Files\graphlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Source Files\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelScene.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +99,12 @@
       <Filter>Source Files\commons</Filter>
     </ClInclude>
     <ClInclude Include="Match3Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

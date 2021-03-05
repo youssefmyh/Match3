@@ -82,6 +82,8 @@
     <ClCompile Include="..\external\include\king\SdlSurface.cpp" />
     <ClCompile Include="..\external\include\king\SdlWindow.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="LevelScene.cpp" />
+    <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="Match3Graph.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +95,8 @@
     <ClInclude Include="..\external\include\king\SdlWindow.h" />
     <ClInclude Include="..\external\include\king\Updater.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="LevelScene.h" />
+    <ClInclude Include="MainScene.h" />
     <ClInclude Include="Match3Graph.h" />
     <ClInclude Include="Match3Settings.h" />
   </ItemGroup>

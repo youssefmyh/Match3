@@ -5,9 +5,10 @@
 #include <king/Updater.h>
 #include <stdlib.h>
 #include <crtdbg.h> 
-
+#include "../msvc/LevelScene.h"
 //**********************************************************************
 
+/*
 class ExampleGame : public King::Updater {
 public:
 
@@ -40,7 +41,7 @@ public:
 			mYellowDiamondY = mEngine.GetMouseY();
 		}
 		mEngine.Render(King::Engine::TEXTURE_YELLOW, mYellowDiamondX, mYellowDiamondY);
-		mEngine.Write("Click to", mYellowDiamondX, mYellowDiamondY + 40.0f);
+		mEngine.Write("Click to", mYellowDiamondX, mYellowDiamondY + 0.0f);
 		mEngine.Write("move me!", mYellowDiamondX, mYellowDiamondY + 70.0f);
 	}
 
@@ -50,14 +51,14 @@ private:
 	float mYellowDiamondX;
 	float mYellowDiamondY;
 };
-
+*/
 //**********************************************************************
 
 int main(int argc, char *argv[]) {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // memeory Leak detection
 
-	ExampleGame game;
+	LevelScene game;
 	game.Start();
 
 	return 0;

@@ -13,7 +13,7 @@
       <Filter>commands</Filter>
     </ClCompile>
     <ClCompile Include="Match3GraphTest.cpp">
-      <Filter>logic</Filter>
+      <Filter>graphlogic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -38,7 +38,7 @@
     <Filter Include="scenes">
       <UniqueIdentifier>{c83747e0-cab2-42a9-8aaf-f5bf8fb26786}</UniqueIdentifier>
     </Filter>
-    <Filter Include="logic">
+    <Filter Include="graphlogic">
       <UniqueIdentifier>{1d3acfdc-1e2e-42f8-b652-7768bf0ae238}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
