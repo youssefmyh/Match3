@@ -93,6 +93,9 @@
     <ClCompile Include="BackgroundItem.cpp">
       <Filter>Source Files\view\components</Filter>
     </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\view\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\include\king\Engine.h">

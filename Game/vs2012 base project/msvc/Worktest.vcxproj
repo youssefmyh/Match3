@@ -84,6 +84,7 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="BackgroundItem.cpp" />
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="JewelryItem.cpp" />
     <ClCompile Include="LevelRepository.cpp" />
     <ClCompile Include="LevelScene.cpp" />

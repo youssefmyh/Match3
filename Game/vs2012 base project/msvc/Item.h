@@ -10,21 +10,11 @@ public:
 	//virtual void draw(King::Engine& engine) = 0;
 	virtual void move(int x , int y) = 0;
 	virtual void setLocation(int x, int y) = 0;
+	int getX() const;
+	int getY() const;
+	int getItemId() const;
+	void setTemporaryLocation(int x, int y);
 
-	int getItemId() const {
-		
-		return mItemId;
-	}
-
-	int getX() const {
-		
-		return mX;
-	}
-
-	int getY() const {
-		
-		return mY;
-	}
 
 protected:
 	int mItemId;
@@ -33,6 +23,8 @@ protected:
 	int mToY;
 	int mX;
 	int mY;
+	int tempX = -1 ;
+	int tempY = -1;
 	int mWidth;
 	int mHeight;
 };

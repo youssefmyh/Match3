@@ -24,27 +24,22 @@ void Board::update(King::Engine& engine)
 			if (mDraggedItemIndex == -1)
 				mDraggedItemIndex = findItemIdByLocation(mouseX, mouseY);
 
+
+			int mouseDifferenceX = mouseX - mStartMouseX;
+			int mouseDifferenceY = mouseY - mStartMouseY;
+
+			int xLocation = levelColoredItems[mDraggedItemIndex]->getX() + mouseDifferenceX;
+			int yLocation = levelColoredItems[mDraggedItemIndex]->getY() + mouseDifferenceY;
+
+			if (mouseX > mStartMouseX + GAME_DEAG_PADDING || mouseX < mStartMouseX - GAME_DEAG_PADDING) {
 			
-			if (mouseX > mStartMouseX + GAME_DEAG_PADDING) {
-				
-				levelColoredItems[mDraggedItemIndex]->setLocation(mouseX, levelColoredItems[mDraggedItemIndex]->getY());
+				levelColoredItems[mDraggedItemIndex]->setTemporaryLocation(xLocation, levelColoredItems[mDraggedItemIndex]->getY());
 
 			}else
-				if (mouseX < mStartMouseX - GAME_DEAG_PADDING) {
 				
-					levelColoredItems[mDraggedItemIndex]->setLocation(mouseX, levelColoredItems[mDraggedItemIndex]->getY());
-
-				}else
-				if (mouseY > mStartMouseY + GAME_DEAG_PADDING) {
-					levelColoredItems[mDraggedItemIndex]->setLocation(levelColoredItems[mDraggedItemIndex]->getX(), mouseY);
-
-				}else
-				if (mouseY < mStartMouseY + GAME_DEAG_PADDING) {
-					levelColoredItems[mDraggedItemIndex]->setLocation(levelColoredItems[mDraggedItemIndex]->getX(), mouseY);
-
+				if (mouseY > mStartMouseY + GAME_DEAG_PADDING || mouseY < mStartMouseY - GAME_DEAG_PADDING) {
+					levelColoredItems[mDraggedItemIndex]->setTemporaryLocation(levelColoredItems[mDraggedItemIndex]->getX(), yLocation);
 				}
-
-			
 		}
 		else {
 		
@@ -69,8 +64,12 @@ void Board::update(King::Engine& engine)
 		int x = mX + col * mCellWidth;
 		int y = mY - (row+1) * mCellHeight;
 
-		if(i != mDraggedItemIndex)
-		levelColoredItems[i]->setLocation(x, y);
+		if (i != mDraggedItemIndex) {
+
+			levelColoredItems[i]->setLocation(x, y);
+			levelColoredItems[i]->setTemporaryLocation(-1, -1);
+		}
+		
 
 		levelColoredItems[i]->update(engine);
 

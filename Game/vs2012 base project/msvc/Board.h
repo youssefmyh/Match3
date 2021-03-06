@@ -34,6 +34,7 @@ public:
 	void move(int x, int y);
 	void setLocation(int x, int y);
 	int findItemIdByLocation(float mouseX, float mouseY);
+
 private:
 	std::vector<Item*>  levelColoredItems;
 	bool isToucheWithinBoard(float x, float y);

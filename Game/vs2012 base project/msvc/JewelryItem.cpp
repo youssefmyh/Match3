@@ -6,7 +6,8 @@ void JewelryItem::update(King::Engine& engine)
 		mY++;
 	}
 	
-	engine.Render(mTexture, mX, mY);
+	
+	engine.Render(mTexture, tempX != -1 ? tempX : mX, tempY != -1 ? tempY : mY);
 
 }
 

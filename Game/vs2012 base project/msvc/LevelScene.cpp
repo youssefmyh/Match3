@@ -26,7 +26,7 @@ void LevelScene::load()
 		int x = boardXLocation + col * textureHeight;
 		int y = boardYLocation + row * textureWidth;
 		*/
-		JewelryItem *jItem = new JewelryItem(mlevelColors[i]+1, 0, 0);
+		JewelryItem *jItem = new JewelryItem(mlevelColors[i]+1, 0, 0,textureWidth,textureHeight);
 		jewelers.push_back(jItem);
 	}
 
