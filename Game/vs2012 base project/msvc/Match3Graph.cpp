@@ -146,11 +146,7 @@ void Match3Graph::dfsFindAllMatches(int nodeId, std::vector<bool>& hVisited, std
 			}
 
 		}
-
-
 	}
-
-
 }
 
 std::vector<std::vector<int>> Match3Graph::findMatchedNodes(int nodeId)
@@ -224,23 +220,17 @@ void Match3Graph::connectNodeById(int nodeId)
 		connectedEdges.insert(leftNodeId);
 	}
 
-
-
 	nodes->insert(std::pair<int,std::set<int>>(nodeId, std::move(connectedEdges)));
 
 }
 
 std::vector<int>& Match3Graph::getNodesColors() {
-
 	return this->nodesColors;
 }
 
 void Match3Graph::setNodesColors(std::vector<int>& levelNodes) {
-
 	this->nodesColors = levelNodes;
-
 }
-
 
 std::vector<std::vector<int>> Match3Graph::swapNodes(int first, int second) {
 

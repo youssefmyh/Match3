@@ -5,10 +5,7 @@
 #include "Match3Graph.h"
 
 enum Direction {
-
 	UP,DOWN,RIGHT,LEFT
-
-
 };
 
 class Board :public Item
@@ -30,18 +27,46 @@ public:
 		}
 
 	}
+	
+	/*update
+	*
+	*/
 	void update(King::Engine& engine);
+
+	/*move
+	*
+	*/
 	void move(int x, int y);
+
+	/*setLocation
+	*
+	*/
 	void setLocation(int x, int y);
+
+	/*update
+	*findItemIdByLocation
+	* @param float mouseX 
+	* f@param float mouseY
+	*/
 	int findItemIdByLocation(float mouseX, float mouseY);
 
 private:
 	std::vector<Item*>  levelColoredItems;
 	bool isToucheWithinBoard(float x, float y);
+	void nodeMouseCheck(King::Engine& engine);
+
+	/*swapTwoNodes
+	/*@param int nodeId
+	/*@param Direction (UP,DOWN,RIGHT,LEFT)
+	*/
+	void swapTwoNodes(int nodeId, Direction direction);
+
 	int mCellHeight;
 	int mCellWidth;
 	int mDraggedItemIndex;
 	float mStartMouseX;
 	float mStartMouseY;
+
+	bool startSwap;
 };
 

@@ -8,8 +8,23 @@ public:
 		mWidth = width;
 		mHeight = height;
 	}
+
+
+	/*update
+	*
+	*/
 	void update(King::Engine& engine);
+
+
+	/*move
+	*
+	*/
 	void move(int x , int y);
+
+
+	/*setLocation
+	*
+	*/
 	void setLocation(int x, int y);
 };
 

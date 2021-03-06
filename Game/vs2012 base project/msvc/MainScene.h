@@ -20,8 +20,19 @@ public:
 		delete mMatch3Graph;
 	}
 
+	/*update
+	*
+	*/
 	virtual void load() = 0;
+
+	/*update
+	*
+	*/
 	virtual void end();
+
+	/*update
+	*
+	*/
 	virtual void won();
 
 public:
