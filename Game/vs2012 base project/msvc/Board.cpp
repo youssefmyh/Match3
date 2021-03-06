@@ -64,7 +64,7 @@ void Board::nodeMouseCheck(King::Engine& engine)
 		}
 
 
-		if (isToucheWithinBoard(mouseX, mouseY) && !startSwap) {
+		if (isToucheWithinBoard(mouseX, mouseY) && !isSwaping) {
 
 			if (mDraggedItemIndex == -1)
 				mDraggedItemIndex = findItemIdByLocation(mouseX, mouseY);
@@ -115,7 +115,7 @@ void Board::nodeMouseCheck(King::Engine& engine)
 		mStartMouseX = -1;
 		mStartMouseY = -1;
 		mDraggedItemIndex = -1;
-		startSwap = false;
+		isSwaping = false;
 	}
 }
 
@@ -131,7 +131,7 @@ int Board::findItemIdByLocation(float mouseX, float mouseY)
 
 void Board::swapTwoNodes(int nodeId, Direction direction)
 {
-	startSwap = true;
+	isSwaping = true;
 	int swapedNodeId = -1;
 	switch (direction)
 	{
@@ -151,11 +151,14 @@ void Board::swapTwoNodes(int nodeId, Direction direction)
 		break;
 	}
 
+	if (swapedNodeId < 0 || swapedNodeId > GAME_MAX_CELLS -1 )
+		return;
+
 	Item *fitem = levelColoredItems[nodeId];
 	Item* sItem = levelColoredItems[swapedNodeId];
 	levelColoredItems[nodeId] = sItem;
 	levelColoredItems[swapedNodeId] = fitem;
-
+	
 }
 
 

@@ -66,7 +66,6 @@ private:
 	int mDraggedItemIndex;
 	float mStartMouseX;
 	float mStartMouseY;
-
-	bool startSwap;
+	bool isSwaping;
 };
 
