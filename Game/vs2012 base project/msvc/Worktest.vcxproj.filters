@@ -140,9 +140,6 @@
     <ClInclude Include="Level.h">
       <Filter>Source Files\controller\commons</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Source Files\view\components</Filter>
-    </ClInclude>
     <ClInclude Include="Match3Settings.h">
       <Filter>Source Files\settings</Filter>
     </ClInclude>
@@ -162,6 +159,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SwapCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

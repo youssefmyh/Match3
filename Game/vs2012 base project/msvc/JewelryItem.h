@@ -1,5 +1,6 @@
 #pragma once
 #include "Item.h"
+
 class JewelryItem :public Item
 {
 public:

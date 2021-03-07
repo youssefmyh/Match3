@@ -1,5 +1,5 @@
 #include "Board.h"
-#include <iostream>
+#include "SwapCommand.h"
 void Board::update(King::Engine& engine)
 {
 
@@ -139,7 +139,7 @@ void Board::swapTwoNodes(int nodeId, int direction)
 		break;
 	case DOWN:
 		swapedNodeId = nodeId - GAME_COL_MAX;
-		break;
+		break;  
 	case RIGHT:
 		swapedNodeId = nodeId + 1;
 		break;
@@ -153,10 +153,9 @@ void Board::swapTwoNodes(int nodeId, int direction)
 	if (swapedNodeId < 0 || swapedNodeId > GAME_MAX_CELLS -1 )
 		return;
 
-	
-
-	mCommandManager->addCommand(nullptr);
-	Item *fitem = mjewelersItems[nodeId];
+	SwapCommand* swap = new SwapCommand(nodeId, swapedNodeId, nodeColors, mjewelersItems, mMatch3Graph);
+	mCommandManager->addCommand(std::move(swap));
+	/*Item *fitem = mjewelersItems[nodeId];
 	Item* sItem = mjewelersItems[swapedNodeId];
 	mjewelersItems[nodeId] = sItem;
 	mjewelersItems[swapedNodeId] = fitem;
@@ -164,7 +163,7 @@ void Board::swapTwoNodes(int nodeId, int direction)
 	nodeColors[nodeId] = fitem->getItemId();
 	nodeColors[swapedNodeId] = sItem->getItemId();
 
-	
+	*/
 
 }
 

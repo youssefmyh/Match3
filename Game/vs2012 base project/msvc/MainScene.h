@@ -8,7 +8,6 @@ class MainScene : public King::Updater
 public:
 	MainScene() : mEngine("./assets") 
 	{
-		mMatch3Graph = new Match3Graph();
 	}
 
 	

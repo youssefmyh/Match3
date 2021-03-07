@@ -1,5 +1,5 @@
 #include "JewelryItem.h"
-
+#include <king/Engine.h>
 void JewelryItem::update(King::Engine& engine)
 {
 	if (mToY > mY) {

@@ -231,6 +231,7 @@ void Match3Graph::setNodesColors(std::vector<int>& levelNodes) {
 	this->nodesColors = levelNodes;
 }
 
+
 std::vector<std::vector<int>> Match3Graph::swapNodes(int first, int second) {
 
 	int firstNode = nodesColors[first];
@@ -239,12 +240,16 @@ std::vector<std::vector<int>> Match3Graph::swapNodes(int first, int second) {
 	nodesColors[first] = secondNode;
 	nodesColors[second] = firstNode;
 
+
+
 	std::vector<std::vector<int>> allOptions = findMatchedNodes(0);
 
 	if (allOptions.size() <= 0)
 	{
 		nodesColors[first] = firstNode;
 		nodesColors[second] = secondNode;
+	
+
 	}
 
 	return std::move(allOptions);
@@ -256,6 +261,7 @@ void Match3Graph::removeMatchedNodes(std::vector<int> markedNodes){
 	for (unsigned int i = 0; i < markedNodes.size(); i++) {
 		
 		nodesColors[markedNodes[i]] = -1; // Marked removed nodes to be -1 
+
 	}
 
 
@@ -309,7 +315,10 @@ void Match3Graph::nodesGravityCheck(std::vector<int> &markedNodes)
 				if (nodeTobeMoved < nodesColors.size()) {
 
 					nodesColors[removedNodeId] = nodesColors[nodeTobeMoved];
+
 					markedNodes[col] = nodeTobeMoved;
+
+
 				}
 				else {
 
@@ -332,13 +341,14 @@ void Match3Graph::nodesGravityCheck(std::vector<int> &markedNodes)
 
 				if (nodeTobeMoved < nodesColors.size()) {
 					nodesColors[removedNodeId] = nodesColors[nodeTobeMoved];
+
+
 					markedNodes[row] = nodeTobeMoved;
 				}
 				else {
 					nodesColors[removedNodeId] = rand() % 5;
 				}
 				nodesColors[nodeTobeMoved] = -1;
-
 			}
 
 		}

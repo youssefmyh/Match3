@@ -3,7 +3,6 @@
 //
 #include "pch.h"
 #include "../msvc/Match3Graph.cpp"
-
 namespace GraphTests {
 
 	class Match3GraphTest : public testing::Test {
@@ -58,6 +57,7 @@ namespace GraphTests {
 
 		Match3Graph match3graph;
 
+	//	std::vector<JewelryItem*> jewelersItems;
 		std::vector<int> colorNodes =
 		{
 			  0 ,  1 ,  2 ,  3 ,  4  ,  5 ,  6 ,  7 ,
@@ -72,6 +72,8 @@ namespace GraphTests {
 
 		for (uint32_t i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
+			
+		//	jewelersItems.push_back(new JewelryItem(colorNodes[i],0,0,0,0));
 		}
 
 		match3graph.setNodesColors(colorNodes);

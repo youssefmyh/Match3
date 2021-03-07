@@ -8,6 +8,8 @@
 #include <vector>
 #include <string>
 
+class Item;
+
 /*struct Match3Node {
 
 	Match3Node(int id, std::set<int> &connectedNodes) : nodeId(id),adjacents(connectedNodes){}
@@ -22,7 +24,7 @@ class Match3Graph
 /*---------------------------------Public Function Section----------------------------------------------------------------*/
 public:
 		
-	Match3Graph() {
+	Match3Graph(std::vector<int>& nodesColors):nodesColors(nodesColors){
 		nodes = new std::map<int, std::set<int>>();
 		
 	}
@@ -103,7 +105,7 @@ public:
 	/*setNodesColors
 	* @param std::vector<int> &levelNodes
 	*/
-	void setNodesColors(std::vector<int>& levelNodes);
+	void setNodesColors(std::vector<Item*>& levelNodes);
 
 	/*
 	/*getNodesColors
@@ -154,8 +156,7 @@ private:
 private:
 	std::map<int, std::set<int>> *nodes; //Adjacency list of Nodes to describe the relation between nodes 
 
-	std::vector<int> nodesColors; // nodes Colors
-
+	std::vector<int> &nodesColors; // nodes Colors
 	
 	/*
 	* dfsFindAllMatches 
