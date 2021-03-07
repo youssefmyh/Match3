@@ -35,6 +35,8 @@ std::vector<std::vector<int>> SwapCommand::swapNodes(int first, int second) {
 		jewelers[second] = secondItemNode;
 
 	}
+
+
 	mCompleted = true;
 	return std::move(allOptions);
 

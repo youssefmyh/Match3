@@ -12,7 +12,11 @@ void Board::update(King::Engine& engine)
 		int x = mX + col * mCellWidth;
 		int y = mY - (row+1) * mCellHeight;
 
-		if (i != mDraggedItemIndex) {
+		if (mjewelersItems[i] == nullptr) {
+		
+			continue;
+		}
+		if (i != mDraggedItemIndex ) {
 
 			mjewelersItems[i]->setLocation(x, y);
 			mjewelersItems[i]->setTemporaryLocation(-1, -1);

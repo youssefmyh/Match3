@@ -52,7 +52,12 @@ void LevelScene::Update() {
 	mCommandManager->update();
 
 
+	std::vector<std::vector<int>> matchedNodes = mMatch3Graph->findMatchedNodes(0);
 
+	for (size_t i = 0; i < matchedNodes.size(); i++)
+	{
+		removeMatchedNodes(matchedNodes[i]);
+	}
 
 
 	if (mEngine.GetMouseButtonDown()) {

@@ -100,7 +100,7 @@
       <Filter>Source Files\controller\commands</Filter>
     </ClCompile>
     <ClCompile Include="SwapCommand.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\controller\commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

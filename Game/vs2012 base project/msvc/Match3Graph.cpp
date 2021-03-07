@@ -53,7 +53,8 @@ int Match3Graph::calculateMaxNodeIdPerCol(int nodeId)
 
 void Match3Graph::dfsFindAllMatches(int nodeId, std::vector<bool>& hVisited, std::vector<bool>& vVisited, std::vector<std::vector<int>>& matched) {
 
-	
+	if (nodesColors[nodeId] == -1)
+		return;
 	std::vector<int> possibleHorizonatlMatches; // Horizonatl matched vector
 	std::vector<int> possibleVerticalMatches; // vertical matched vector
 	
@@ -63,7 +64,7 @@ void Match3Graph::dfsFindAllMatches(int nodeId, std::vector<bool>& hVisited, std
 	* ----| Z |-----
 	* ----|---|-----
 	*/
-	if (!hVisited[nodeId]){
+	if (!hVisited[nodeId] ){
 
 		int maxNodeIdInRow = calculateMaxNodeIdPerRow(nodeId);
 
