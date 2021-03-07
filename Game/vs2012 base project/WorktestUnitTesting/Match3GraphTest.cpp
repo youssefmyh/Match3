@@ -14,7 +14,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenCreateNewLevelShouldhas0Matches) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -37,6 +36,9 @@ namespace GraphTests {
 			0,4,1,2,2,1,1,0
 		};
 
+		Match3Graph match3graph(colorNodes);
+
+
 		for (uint32_t i = 0; i < GAME_MAX_CELLS; i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
@@ -55,7 +57,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenMarkedNodesIntheLastRowShouldbeStayed_Minus_1) {
 
-		Match3Graph match3graph;
 
 	//	std::vector<JewelryItem*> jewelersItems;
 		std::vector<int> colorNodes =
@@ -69,6 +70,8 @@ namespace GraphTests {
 			 48 , 49 ,  50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
 		};
+
+		Match3Graph match3graph(colorNodes);
 
 		for (uint32_t i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -98,7 +101,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenMarkedNodesIntheFirstRowShouldbeLinkedtoTheTopNodes) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -112,6 +114,7 @@ namespace GraphTests {
 			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
 		};
 
+		Match3Graph match3graph(colorNodes);
 		for (uint32_t i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
 		}
@@ -137,7 +140,6 @@ namespace GraphTests {
 	}
 	TEST(Match3GraphTests, WhenMarkedNodesIntheSameRowShouldbeLinkedtoTheTopNodes) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -150,6 +152,8 @@ namespace GraphTests {
 			 48 , 49 ,  50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
 		};
+
+		Match3Graph match3graph(colorNodes);
 
 		for (uint32_t i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -173,7 +177,6 @@ namespace GraphTests {
 	}
 	TEST(Match3GraphTests, WhenMarkedNodesShouldbeLinkedtoTheTopNodes) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -186,6 +189,7 @@ namespace GraphTests {
 			 48 , 49 ,  50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
 		};
+		Match3Graph match3graph(colorNodes);
 
 		for (uint32_t i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -208,7 +212,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSwapTwoNodesAndNoForMatchingShouldRollBack) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -221,6 +224,9 @@ namespace GraphTests {
 			 48 , 49 ,  50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 ,  58 , 59 , 60 , 61 , 62 , 63
 		};
+
+		Match3Graph match3graph(colorNodes);
+
 
 		for (uint32_t i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -242,7 +248,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSwapTwoNodesVerticallyForMatchingShouldReturn_1_Matched) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -255,6 +260,9 @@ namespace GraphTests {
 			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
+
+		Match3Graph match3graph(colorNodes);
+
 
 		for (unsigned int i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -275,7 +283,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSwapTwoNodesForMatchingShouldReturn_1_Matched) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -288,6 +295,9 @@ namespace GraphTests {
 			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
+
+		Match3Graph match3graph(colorNodes);
+
 
 		for (unsigned int i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -307,7 +317,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSendingLevelwith_MatchedBeginEndMiddle_MatchPossiblityShouldRetrun4) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -320,6 +329,9 @@ namespace GraphTests {
 			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 , 58 , 59 , 60 , 0 , 0 , 0
 		};
+
+		Match3Graph match3graph(colorNodes);
+
 
 		for (unsigned int i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -338,7 +350,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSendingLevelwith_MatchedMiddleAndEnd_MatchPossiblityShouldRetrun3) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -351,6 +362,9 @@ namespace GraphTests {
 			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 , 58 , 59 , 60 , 0 , 0 , 0
 		};
+
+		Match3Graph match3graph(colorNodes);
+
 
 		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -369,7 +383,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSendingLevelwith_CommonMatchedPoint_MatchPossiblityShouldRetrun2) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -382,6 +395,9 @@ namespace GraphTests {
 			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
+
+		Match3Graph match3graph(colorNodes);
+
 
 		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -401,7 +417,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSendingLevelwith_2_MatchPossiblityShouldRetrun2) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -414,6 +429,9 @@ namespace GraphTests {
 			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
+
+		Match3Graph match3graph(colorNodes);
+
 
 		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -433,7 +451,7 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSendingLevelwith_1_MatchPossiblityShouldRetrun1) {
 
-		Match3Graph match3graph;
+		
 
 		std::vector<int> colorNodes =
 		{
@@ -446,6 +464,9 @@ namespace GraphTests {
 			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
+
+		Match3Graph match3graph(colorNodes);
+
 
 		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -466,7 +487,6 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSendingLevelwith_AllMatched_MatchPossiblityShouldReturnNonRpeatedMatched) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes =
 		{
@@ -479,6 +499,8 @@ namespace GraphTests {
 			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
 			0 , 0 , 0 , 0 , 0 , 0 , 0 , 0
 		};
+
+		Match3Graph match3graph(colorNodes);
 
 		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -495,7 +517,6 @@ namespace GraphTests {
 	}
 	TEST(Match3GraphTests, WhenSendingLevelwith_No_MatchPossiblityShouldRetrun0) {
 
-		Match3Graph match3graph;
 
 		std::vector<int> colorNodes = 
 		{
@@ -508,6 +529,8 @@ namespace GraphTests {
 			 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 ,
 			 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63
 		};
+
+		Match3Graph match3graph(colorNodes);
 
 		for (unsigned i = 0; i < colorNodes.size(); i++) {
 			match3graph.addNode(colorNodes[i], i);
@@ -523,7 +546,8 @@ namespace GraphTests {
 	}
 	TEST(Match3GraphTests, WhenNodeId_0_MAXNodeNumberInRowShouldbe_7) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 
 		EXPECT_EQ(match3graph.calculateMaxNodeIdPerRow(0),7);
 
@@ -531,7 +555,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenNodeId_11_MAXNodeNumberInRowShouldbe_15) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 
 		EXPECT_EQ(match3graph.calculateMaxNodeIdPerRow(11), 15);
 
@@ -539,7 +564,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenNodeId_35_MAXNodeNumberInRowShouldbe_39) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 
 		EXPECT_EQ(match3graph.calculateMaxNodeIdPerRow(35), 39);
 
@@ -547,7 +573,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenNodeId_0_MAXNodeNumberInColShouldbe_56) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 
 		EXPECT_EQ(match3graph.calculateMaxNodeIdPerCol(0), 56);
 
@@ -555,7 +582,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenNodeId_35_MAXNodeNumberInColShouldbe_59) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 
 		EXPECT_EQ(match3graph.calculateMaxNodeIdPerCol(35), 59);
 
@@ -563,7 +591,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenNodeId_23_MAXNodeNumberInColShouldbe_63) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 
 		EXPECT_EQ(match3graph.calculateMaxNodeIdPerCol(23), 63);
 
@@ -574,7 +603,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenNodeIdLessThan55ShouldhasTopNode) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 
 		for (int i = 0; i < GAME_MAX_CELLS - GAME_COL_MAX; i++) {
 
@@ -586,7 +616,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenNodeNotLocatedInLastColsholdHasRightNode) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 
 		for (int i = 0; i < GAME_MAX_CELLS ; i++) {
 			int col = i % GAME_COL_MAX;
@@ -604,7 +635,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenConstructGraphWithMoreThan64VectorShouldIgnoreit) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 
 		for (int i = 0; i < 100; i++) {
 
@@ -632,7 +664,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNodeNegativeNodeIdMapSizeShouldbe0) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, -1);
 
 		EXPECT_EQ(match3graph.getNodes()->size(), 0);
@@ -641,7 +674,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode_64_NodeIdMapSizeShouldbe0) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 64);
 
 		EXPECT_EQ(match3graph.getNodes()->size(), 0);
@@ -650,7 +684,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode0MapShouldHas2Edges1AND8) {
 	
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0,0);
 		auto map = match3graph.getNodes();
 		auto it = map->find(0);
@@ -670,7 +705,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode1MapShouldHas3Edges0_2_9) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 1);
 		auto map = match3graph.getNodes();
 		auto it = map->find(1);
@@ -691,7 +727,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode2MapShouldHas3Edges1_3_10) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 2);
 		auto map = match3graph.getNodes();
 		auto it = map->find(2);
@@ -712,7 +749,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode_6_MapShouldHas3Edges5_7_13) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 6);
 		auto map = match3graph.getNodes();
 
@@ -734,7 +772,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode_22_MapShouldHas_4_Edges21_14_23_30) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 22);
 		auto map = match3graph.getNodes();
 
@@ -757,7 +796,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode_37_MapShouldHas_4_Edges36_38_45_29) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 37);
 		auto map = match3graph.getNodes();
 
@@ -780,7 +820,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode_24_MapShouldHas_3_Edges25_16_32) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 24);
 		auto map = match3graph.getNodes();
 
@@ -802,7 +843,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode_56_MapShouldHas_3_Edges25_16_32) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 56);
 		auto map = match3graph.getNodes();
 
@@ -823,7 +865,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode_63_MapShouldHas_3_Edges25_16_32) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 63);
 		auto map = match3graph.getNodes();
 
@@ -843,7 +886,8 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenAddNode_7_MapShouldHas3Edges6_15) {
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		match3graph.addNode(0, 7);
 		auto map = match3graph.getNodes();
 		auto it = map->find(7);
@@ -864,7 +908,8 @@ namespace GraphTests {
 	TEST(Match3GraphTests, WhenSendingNodeWithId0ShouldRetrunTupleWith_0_0) {
 
 		//std::map<int, std::set<int>> n;
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		std::tuple<int, int> location = match3graph.findNodeLocationById(0);
 
 
@@ -878,7 +923,8 @@ namespace GraphTests {
 
 		//std::map<int, std::set<int>> n;
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		std::tuple<int, int> location = match3graph.findNodeLocationById(9);
 
 
@@ -891,7 +937,8 @@ namespace GraphTests {
 
 		//std::map<int, std::set<int>> n;
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		std::tuple<int, int> location = match3graph.findNodeLocationById(19);
 
 
@@ -905,7 +952,8 @@ namespace GraphTests {
 
 		//std::map<int, std::set<int>> n;
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		std::tuple<int, int> location = match3graph.findNodeLocationById(28);
 
 
@@ -920,7 +968,8 @@ namespace GraphTests {
 
 		//std::map<int, std::set<int>> n;
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		std::tuple<int, int> location = match3graph.findNodeLocationById(37);
 
 
@@ -934,7 +983,8 @@ namespace GraphTests {
 
 		//std::map<int, std::set<int>> n;
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		std::tuple<int, int> location = match3graph.findNodeLocationById(46);
 
 
@@ -947,7 +997,8 @@ namespace GraphTests {
 
 		//std::map<int, std::set<int>> n;
 
-		Match3Graph match3graph;
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		std::tuple<int, int> location = match3graph.findNodeLocationById(54);
 
 
@@ -959,9 +1010,9 @@ namespace GraphTests {
 
 	TEST(Match3GraphTests, WhenSendingNodeWithId63ShouldRetrunTupleWith_7_7) {
 
-		//std::map<int, std::set<int>> n;
-
-		Match3Graph match3graph;
+		
+		std::vector<int> colorNodes;
+		Match3Graph match3graph(colorNodes);
 		std::tuple<int, int> location = match3graph.findNodeLocationById(63);
 
 

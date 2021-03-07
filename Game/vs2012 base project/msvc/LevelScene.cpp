@@ -102,7 +102,6 @@ void LevelScene::removeMatchedNodes(std::vector<int> markedNodes) {
 		jewelers[markedNodes[i]] = nullptr;
 	}
 
-
 }
 
 void LevelScene::fillTopVector()
@@ -113,7 +112,6 @@ void LevelScene::fillTopVector()
 		if (mlevelColors[i] == -1) {
 			
 			mlevelColors[i] =  rand() % 5;
-			std::cout << "New Rand " << mlevelColors[i] << "\n";
 
 				jewelers[i] = std::move(std::make_shared<JewelryItem>(mlevelColors[i] +1 , 0, 0, 35, 35));
 		
@@ -135,8 +133,6 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 	uint32_t maxNodePerCol = markedNodes[lastNodeIndex] + GAME_COL_MAX;
 	if (maxNodePerCol > mlevelColors.size() - 1) // back point to move all points to up
 		return;
-
-
 
 	if (markedNodes[0] == markedNodes[1] - 1)
 	{
