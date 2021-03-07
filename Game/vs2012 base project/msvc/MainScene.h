@@ -7,9 +7,6 @@ class MainScene : public King::Updater
 {
 public:
 	MainScene() : mEngine("./assets") 
-		, mRotation(0.0f)
-		, mYellowDiamondX(100.0f)
-		, mYellowDiamondY(100.0f) 
 	{
 		mMatch3Graph = new Match3Graph();
 	}
@@ -46,8 +43,6 @@ public:
 protected:
 	King::Engine mEngine;
 	Match3Graph* mMatch3Graph;
-	float mRotation;
-	float mYellowDiamondX;
-	float mYellowDiamondY;
+
 };
 

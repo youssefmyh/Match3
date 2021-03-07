@@ -1,5 +1,4 @@
 #include "Match3Graph.h"
-#include <iostream>
 
 void Match3Graph::addNode(int color, int row,int col)
 {

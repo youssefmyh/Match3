@@ -7,6 +7,7 @@
 #include "Match3Settings.h"
 #include <vector>
 #include <string>
+
 /*struct Match3Node {
 
 	Match3Node(int id, std::set<int> &connectedNodes) : nodeId(id),adjacents(connectedNodes){}
@@ -96,6 +97,13 @@ public:
 	* @param std::vector<int> &levelNodes
 	*/
 	void setNodesColors(std::vector<int> &levelNodes);
+
+
+	/*
+	/*setNodesColors
+	* @param std::vector<int> &levelNodes
+	*/
+	void setNodesColors(std::vector<int>& levelNodes);
 
 	/*
 	/*getNodesColors

@@ -3,8 +3,7 @@
 void Board::update(King::Engine& engine)
 {
 
-
-	for (unsigned i = 0 ; i < levelColoredItems.size(); i++ )
+	for (unsigned i = 0 ; i < mjewelersItems.size(); i++ )
 	{
 		std::tuple<int, int> location = Match3Graph::findNodeLocationById(i);
 	
@@ -15,10 +14,10 @@ void Board::update(King::Engine& engine)
 
 		if (i != mDraggedItemIndex) {
 
-			levelColoredItems[i]->setLocation(x, y);
-			levelColoredItems[i]->setTemporaryLocation(-1, -1);
+			mjewelersItems[i]->setLocation(x, y);
+			mjewelersItems[i]->setTemporaryLocation(-1, -1);
 		}
-		levelColoredItems[i]->update(engine);
+		mjewelersItems[i]->update(engine);
 		
 	}
 
@@ -72,13 +71,13 @@ void Board::nodeMouseCheck(King::Engine& engine)
 			int mouseDifferenceX = mouseX - mStartMouseX;
 			int mouseDifferenceY = mouseY - mStartMouseY;
 
-			int xLocation = levelColoredItems[mDraggedItemIndex]->getX() + mouseDifferenceX;
-			int yLocation = levelColoredItems[mDraggedItemIndex]->getY() + mouseDifferenceY;
+			int xLocation = mjewelersItems[mDraggedItemIndex]->getX() + mouseDifferenceX;
+			int yLocation = mjewelersItems[mDraggedItemIndex]->getY() + mouseDifferenceY;
 
 			if (mouseX > mStartMouseX + GAME_DEAG_PADDING || mouseX < mStartMouseX - GAME_DEAG_PADDING) {
 
 
-				levelColoredItems[mDraggedItemIndex]->setTemporaryLocation(xLocation, levelColoredItems[mDraggedItemIndex]->getY());
+				mjewelersItems[mDraggedItemIndex]->setTemporaryLocation(xLocation, mjewelersItems[mDraggedItemIndex]->getY());
 				
 
 				if (mouseX > mStartMouseX + GAME_DEAG_PADDING) {
@@ -100,7 +99,7 @@ void Board::nodeMouseCheck(King::Engine& engine)
 					else {
 						swapTwoNodes(mDraggedItemIndex, DOWN);
 					}
-					levelColoredItems[mDraggedItemIndex]->setTemporaryLocation(levelColoredItems[mDraggedItemIndex]->getX(), yLocation);
+					mjewelersItems[mDraggedItemIndex]->setTemporaryLocation(mjewelersItems[mDraggedItemIndex]->getX(), yLocation);
 
 				}
 		}
@@ -129,7 +128,7 @@ int Board::findItemIdByLocation(float mouseX, float mouseY)
 	return itemId;
 }
 
-void Board::swapTwoNodes(int nodeId, Direction direction)
+void Board::swapTwoNodes(int nodeId, int direction)
 {
 	isSwaping = true;
 	int swapedNodeId = -1;
@@ -154,11 +153,19 @@ void Board::swapTwoNodes(int nodeId, Direction direction)
 	if (swapedNodeId < 0 || swapedNodeId > GAME_MAX_CELLS -1 )
 		return;
 
-	Item *fitem = levelColoredItems[nodeId];
-	Item* sItem = levelColoredItems[swapedNodeId];
-	levelColoredItems[nodeId] = sItem;
-	levelColoredItems[swapedNodeId] = fitem;
 	
+
+	mCommandManager->addCommand(nullptr);
+	Item *fitem = mjewelersItems[nodeId];
+	Item* sItem = mjewelersItems[swapedNodeId];
+	mjewelersItems[nodeId] = sItem;
+	mjewelersItems[swapedNodeId] = fitem;
+	
+	nodeColors[nodeId] = fitem->getItemId();
+	nodeColors[swapedNodeId] = sItem->getItemId();
+
+	
+
 }
 
 

@@ -96,6 +96,12 @@
     <ClCompile Include="Item.cpp">
       <Filter>Source Files\view\components</Filter>
     </ClCompile>
+    <ClCompile Include="CommandManager.cpp">
+      <Filter>Source Files\controller\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\include\king\Engine.h">
@@ -150,6 +156,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BackgroundItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,7 +3,8 @@
 #include <vector>
 #include "Match3Settings.h"
 #include "Match3Graph.h"
-
+#include "CommandManager.h"
+#include <memory>
 enum Direction {
 	UP,DOWN,RIGHT,LEFT
 };
@@ -11,9 +12,13 @@ enum Direction {
 class Board :public Item
 {
 public:
-	Board(int itemId, int x, int y, std::vector<Item*> & levelColoredItems, int cellWidth, int cellHeight) : 
-		Item(itemId, x, y), levelColoredItems(levelColoredItems),mCellWidth(cellWidth),mCellHeight(cellHeight)
+	Board(int itemId, int x, int y, std::vector<int> & nodeColors, std::vector<Item*> & jewelersItems, int cellWidth, int cellHeight , std::shared_ptr<CommandManager> cmdManager)
+		:
+		Item(itemId, x, y),nodeColors(nodeColors),
+		mjewelersItems(jewelersItems),
+		mCellWidth(cellWidth),mCellHeight(cellHeight)
 	{
+		this->mCommandManager = cmdManager;
 		mWidth =  GAME_ROW_MAX * cellWidth;
 		mHeight = GAME_COL_MAX * cellHeight;
 
@@ -21,7 +26,7 @@ public:
 
 	~Board() {
 	
-		for each (Item * item in levelColoredItems)
+		for each (Item * item in mjewelersItems)
 		{
 			delete item;
 		}
@@ -51,15 +56,17 @@ public:
 	int findItemIdByLocation(float mouseX, float mouseY);
 
 private:
-	std::vector<Item*>  levelColoredItems;
+	std::vector<Item*>  mjewelersItems;
+	std::vector<int> nodeColors;
 	bool isToucheWithinBoard(float x, float y);
 	void nodeMouseCheck(King::Engine& engine);
+
 
 	/*swapTwoNodes
 	/*@param int nodeId
 	/*@param Direction (UP,DOWN,RIGHT,LEFT)
 	*/
-	void swapTwoNodes(int nodeId, Direction direction);
+	void swapTwoNodes(int nodeId, int direction);
 
 	int mCellHeight;
 	int mCellWidth;
@@ -67,5 +74,8 @@ private:
 	float mStartMouseX;
 	float mStartMouseY;
 	bool isSwaping;
+
+	std::shared_ptr<CommandManager> mCommandManager; // command manager
+
 };
 

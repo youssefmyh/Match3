@@ -5,14 +5,19 @@ void LevelScene::Start() {
 	mEngine.Start(*this);
 }
 
+void LevelScene::init()
+{
+	mCommandManager = std::make_shared<CommandManager>();
+	mBackground = new BackgroundItem(0, 0, 0);
+
+
+}
+
 void LevelScene::load()
 {
-	mBackground = new BackgroundItem(0, 0, 0);
+
 	mlevelColors = LevelRepository::findLevelById(1);
 	mMatch3Graph->setNodesColors(mlevelColors);
-
-	std::vector<Item*> jewelers;
-
 	int textureWidth = mEngine.GetTextureWidth(King::Engine::Texture::TEXTURE_BLUE);
 	int textureHeight = mEngine.GetTextureWidth(King::Engine::Texture::TEXTURE_BLUE);
 	int boardXLocation = std::get<0>(mBackground->getBoardLocation());
@@ -24,7 +29,7 @@ void LevelScene::load()
 		jewelers.push_back(jItem);
 	}
 
-	board = new Board(0, boardXLocation , boardYLocation , std::move(jewelers), textureWidth, textureHeight);
+	board = new Board(0, boardXLocation , boardYLocation , mlevelColors, jewelers, textureWidth, textureHeight , mCommandManager);
 
 }
 
@@ -40,7 +45,7 @@ void LevelScene::Update() {
 
 	mBackground->update(mEngine);
 	board->update(mEngine);
-
+	mCommandManager->update();
 
 
 	if (mEngine.GetMouseButtonDown()) {
