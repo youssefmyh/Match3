@@ -15,7 +15,7 @@ void LevelScene::init()
 
 void LevelScene::load()
 {
-
+	mPointItem = new PointsItem(-1,20, 20);
 	mlevelColors = LevelRepository::findLevelById(1);
 	mMatch3Graph = std::make_shared<Match3Graph>(mlevelColors);
 
@@ -50,7 +50,7 @@ void LevelScene::Update() {
 	mBackground->update(mEngine);
 	board->update(mEngine);
 	mCommandManager->update();
-
+	mPointItem->update(mEngine);
 
 	std::vector<std::vector<int>> matchedNodes = mMatch3Graph->findMatchedNodes(0);
 
@@ -58,9 +58,9 @@ void LevelScene::Update() {
 	{
 		removeMatchedNodes(matchedNodes[i]);
 		nodesGravityCheck(matchedNodes[i]);
-		fillTopVector();
+		mPointItem->addPoints(matchedNodes[i].size());
 	}
-
+	fillTopVector();
 	
 
 	if (mEngine.GetMouseButtonDown()) {
@@ -99,7 +99,7 @@ void LevelScene::removeMatchedNodes(std::vector<int> markedNodes) {
 		mlevelColors[markedNodes[i]] = -1; // Marked removed nodes to be -1 
 		jewelers[markedNodes[i]] = nullptr;
 	}
-
+	
 }
 
 void LevelScene::fillTopVector()
@@ -107,18 +107,6 @@ void LevelScene::fillTopVector()
 	std::shared_ptr<FillCommand> fillCommand = std::make_shared<FillCommand>(mlevelColors, jewelers, mMatch3Graph);
 	mCommandManager->addCommand(fillCommand);
 
-	/*for (size_t i = GAME_MAX_CELLS; i < mlevelColors.size(); i++)
-	{
-
-		if (mlevelColors[i] == -1) {
-			
-			mlevelColors[i] =  rand() % 5;
-
-				jewelers[i] = std::move(std::make_shared<JewelryItem>(mlevelColors[i] +1 , 0, 0, 35, 35));
-		
-		}
-
-	}*/
 }
 
 void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)

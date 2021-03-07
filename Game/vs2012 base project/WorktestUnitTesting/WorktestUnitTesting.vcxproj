@@ -42,6 +42,11 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BoardBuilderTest.cpp" />
+    <ClCompile Include="CommandFactoryTest.cpp" />
+    <ClCompile Include="CommandTest.cpp" />
+    <ClCompile Include="JewerlyItemTest.cpp" />
+    <ClCompile Include="LevelBuilderTest.cpp" />
     <ClCompile Include="Match3GraphTest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">

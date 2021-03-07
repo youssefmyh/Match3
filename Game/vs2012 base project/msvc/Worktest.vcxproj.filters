@@ -40,14 +40,14 @@
     <Filter Include="Source Files\controller\commands">
       <UniqueIdentifier>{7c617044-720e-4487-b843-8c813af7fabe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\model\factories">
-      <UniqueIdentifier>{51df6fc2-995f-43b7-902a-19f98968f370}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\view\scenes">
       <UniqueIdentifier>{b5811390-ffe4-483f-933d-6a2b50115e3f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\settings">
       <UniqueIdentifier>{ab741345-1ed7-4ddf-a4cd-bcf73517f601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\view\builders">
+      <UniqueIdentifier>{51df6fc2-995f-43b7-902a-19f98968f370}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +107,21 @@
     </ClCompile>
     <ClCompile Include="RemoveMatchedCommand.cpp">
       <Filter>Source Files\controller\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="TestCommand.cpp">
+      <Filter>Source Files\controller\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardBuilder.cpp">
+      <Filter>Source Files\view\builders</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelBuilders.cpp">
+      <Filter>Source Files\view\builders</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandFactory.cpp">
+      <Filter>Source Files\controller\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="PointsItem.cpp">
+      <Filter>Source Files\view\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +189,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RemoveMatchedCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelBuilders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PointsItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -26,3 +26,8 @@ void CommandManager::update()
 	lock.unlock();
 	
 }
+
+int CommandManager::size()
+{
+	return m_commandsQueue.size();
+}

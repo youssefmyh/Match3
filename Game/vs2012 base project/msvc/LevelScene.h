@@ -14,7 +14,7 @@
 #include "CommandManager.h"
 #include "FillCommand.h"
 #include <memory>
-
+#include "PointsItem.h"
 class LevelScene: public MainScene,public Level
 {
 public:
@@ -28,6 +28,7 @@ public:
 
 		delete board;
 		delete mBackground;
+		delete mPointItem;
 
 	}
 
@@ -54,8 +55,7 @@ private:
 	Board* board;
 	BackgroundItem *mBackground;
 	std::shared_ptr<CommandManager> mCommandManager;
-
-
+	PointsItem* mPointItem;
 private:
 
 	void nodesGravityCheck(std::vector<int>& markedNodes);

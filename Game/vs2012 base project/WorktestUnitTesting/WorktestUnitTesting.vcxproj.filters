@@ -6,6 +6,21 @@
     <ClCompile Include="Match3GraphTest.cpp">
       <Filter>graphlogic</Filter>
     </ClCompile>
+    <ClCompile Include="CommandTest.cpp">
+      <Filter>commands</Filter>
+    </ClCompile>
+    <ClCompile Include="JewerlyItemTest.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelBuilderTest.cpp">
+      <Filter>builder</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardBuilderTest.cpp">
+      <Filter>builder</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandFactoryTest.cpp">
+      <Filter>commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -20,9 +35,6 @@
     <Filter Include="commons">
       <UniqueIdentifier>{8ff3a459-a1d7-438d-a1ce-68add92d76e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="factories">
-      <UniqueIdentifier>{597b6fa9-4436-42e0-a23f-01d5c27165db}</UniqueIdentifier>
-    </Filter>
     <Filter Include="components">
       <UniqueIdentifier>{673cac98-c695-45f1-9c79-41d6f05815ed}</UniqueIdentifier>
     </Filter>
@@ -31,6 +43,9 @@
     </Filter>
     <Filter Include="graphlogic">
       <UniqueIdentifier>{1d3acfdc-1e2e-42f8-b652-7768bf0ae238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="builder">
+      <UniqueIdentifier>{a38dbc88-e110-4f24-8ce3-0f59b49b0cde}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

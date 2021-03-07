@@ -21,11 +21,13 @@ public:
 	~CommandManager() {
 	
 		while (!m_commandsQueue.empty()) {
-			std::shared_ptr<Command> cmd = m_commandsQueue.front();
+			std::weak_ptr<Command> cmd = m_commandsQueue.front();
 			m_commandsQueue.pop();
 		}
 	
 	}
+
+	int size();
 
 private:
 	std::queue<std::shared_ptr<Command>> m_commandsQueue; // command queue

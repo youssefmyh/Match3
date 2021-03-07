@@ -84,16 +84,21 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="BackgroundItem.cpp" />
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="BoardBuilder.cpp" />
+    <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="FillCommand.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="JewelryItem.cpp" />
+    <ClCompile Include="LevelBuilders.cpp" />
     <ClCompile Include="LevelRepository.cpp" />
     <ClCompile Include="LevelScene.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="Match3Graph.cpp" />
+    <ClCompile Include="PointsItem.cpp" />
     <ClCompile Include="RemoveMatchedCommand.cpp" />
     <ClCompile Include="SwapCommand.cpp" />
+    <ClCompile Include="TestCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\include\king\Engine.h" />
@@ -105,19 +110,24 @@
     <ClInclude Include="..\external\include\king\Updater.h" />
     <ClInclude Include="BackgroundItem.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="BoardBuilder.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="FillCommand.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="JewelryItem.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelBuilders.h" />
     <ClInclude Include="LevelRepository.h" />
     <ClInclude Include="LevelScene.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="Match3Graph.h" />
     <ClInclude Include="Match3Settings.h" />
+    <ClInclude Include="PointsItem.h" />
     <ClInclude Include="RemoveMatchedCommand.h" />
     <ClInclude Include="SwapCommand.h" />
+    <ClInclude Include="TestCommand.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
