@@ -43,7 +43,7 @@ private:
 
 protected:
 	std::vector<int> mlevelColors;
-	std::vector<Item*> jewelers;
+	std::vector<std::shared_ptr<Item>> jewelers;
 private:
 	Board* board;
 	BackgroundItem *mBackground;

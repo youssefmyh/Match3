@@ -12,8 +12,8 @@ std::vector<std::vector<int>> SwapCommand::swapNodes(int first, int second) {
 	int secondNode = mlevelColors[second];
 
 
-	Item* firstItemNode = jewelers[first];
-	Item* secondItemNode = jewelers[second];
+	std::shared_ptr<Item> firstItemNode = jewelers[first];
+	std::shared_ptr<Item> secondItemNode = jewelers[second];
 
 
 	mlevelColors[first] = secondNode;

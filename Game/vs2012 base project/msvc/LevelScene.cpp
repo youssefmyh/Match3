@@ -17,7 +17,7 @@ void LevelScene::load()
 {
 
 	mlevelColors = LevelRepository::findLevelById(1);
-	mMatch3Graph = new Match3Graph(mlevelColors);
+	mMatch3Graph = std::make_shared<Match3Graph>(mlevelColors);
 
 	int textureWidth = mEngine.GetTextureWidth(King::Engine::Texture::TEXTURE_BLUE);
 	int textureHeight = mEngine.GetTextureWidth(King::Engine::Texture::TEXTURE_BLUE);
@@ -26,9 +26,9 @@ void LevelScene::load()
 
 	for (uint32_t i = 0;  i< mlevelColors.size();  i++)
 	{
-		JewelryItem *jItem = new JewelryItem(mlevelColors[i]+1, 0, 0,textureWidth,textureHeight);
+		std::shared_ptr<JewelryItem> jItem = std::make_shared<JewelryItem>(mlevelColors[i]+1, 0, 0,textureWidth,textureHeight);
 		mMatch3Graph->addNode(mlevelColors[i], i);
-		jewelers.push_back(jItem);
+		jewelers.push_back(std::move(jItem));
 	}
 
 	board = new Board(0, boardXLocation , boardYLocation , mlevelColors, jewelers, textureWidth, textureHeight , mCommandManager,mMatch3Graph);
@@ -145,13 +145,14 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 
 			int nodeColor = mlevelColors[removedNodeId];
 
-			Item * removedNodeItem = jewelers[removedNodeId];
+			std::weak_ptr<Item>  removedNodeItem = jewelers[removedNodeId];
+			std::weak_ptr<Item>  deletedNode = jewelers[removedNodeId];
 
 			if (nodeColor == -1) {
 
 				uint32_t nodeTobeMoved = removedNodeId + markedNodes.size() * GAME_COL_MAX;
 
-				Item* nodeTobMovedItem = jewelers[nodeTobeMoved];
+				std::shared_ptr<Item>  nodeTobMovedItem = jewelers[nodeTobeMoved];
 
 
 				if (nodeTobeMoved < mlevelColors.size()) {
@@ -170,7 +171,9 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 				}
 
 				mlevelColors[nodeTobeMoved] = -1;
+				
 				jewelers[nodeTobeMoved] = nullptr;
+			
 			}
 
 		}
@@ -179,22 +182,28 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 
 		for (int row = markedNodes.size() - 1; row >= 0; row--) {
 			int removedNodeId = markedNodes[row];
+
 			int nodeColor = mlevelColors[removedNodeId];
 			if (nodeColor == -1) {
 
 				uint32_t nodeTobeMoved = removedNodeId + GAME_COL_MAX;
-				Item* nodeTobMovedItem = jewelers[nodeTobeMoved];
-
+				std::shared_ptr<Item> nodeTobMovedItem = jewelers[nodeTobeMoved];
+				std::weak_ptr<Item> deletedNode = jewelers[removedNodeId];
 				if (nodeTobeMoved < mlevelColors.size()) {
 					mlevelColors[removedNodeId] = mlevelColors[nodeTobeMoved];
+
+					
 					jewelers[removedNodeId] = nodeTobMovedItem;
 
 					markedNodes[row] = nodeTobeMoved;
 				}
 				else {
+
 					mlevelColors[removedNodeId] = rand() % 5;
+
 				}
 				mlevelColors[nodeTobeMoved] = -1;
+				
 				jewelers[nodeTobeMoved] = nullptr;
 			}
 

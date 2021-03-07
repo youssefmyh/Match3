@@ -1,4 +1,10 @@
 #define _CRTDBG_MAP_ALLOC
+#include<iostream>
+#include <crtdbg.h>
+#ifdef _DEBUG
+#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#define new DEBUG_NEW
+#endif
 
 #include <king/Engine.h>
 #include <king/Updater.h>
@@ -59,7 +65,7 @@ int main(int argc, char *argv[]) {
 
 	LevelScene game;
 	game.Start();
-
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
 

@@ -13,7 +13,6 @@ public:
 	
 	~MainScene() {
 	
-		delete mMatch3Graph;
 	}
 
 	/*update
@@ -41,7 +40,7 @@ public:
 
 protected:
 	King::Engine mEngine;
-	Match3Graph* mMatch3Graph;
+	std::shared_ptr<Match3Graph> mMatch3Graph;
 
 };
 

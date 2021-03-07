@@ -13,10 +13,10 @@ enum Direction {
 class Board :public Item
 {
 public:
-	Board(int itemId, int x, int y, std::vector<int> & nodeColors, std::vector<Item*> & jewelersItems, 
-		int cellWidth, int cellHeight , std::shared_ptr<CommandManager> cmdManager, Match3Graph * match3Graph)
+	Board(int itemId, int x, int y, std::vector<int> & nodeColors, std::vector<std::shared_ptr<Item>> & jewelersItems, 
+		int cellWidth, int cellHeight , std::shared_ptr<CommandManager> cmdManager, std::shared_ptr<Match3Graph> match3Graph)
 		:
-		Item(itemId, x, y),nodeColors(nodeColors),
+		Item(itemId, x, y),nodeColors(nodeColors), 
 		mjewelersItems(jewelersItems),
 		mCellWidth(cellWidth),mCellHeight(cellHeight), mMatch3Graph(match3Graph)
 	{
@@ -28,10 +28,8 @@ public:
 
 	~Board() {
 	
-		for each (Item * item in mjewelersItems)
-		{
-			delete item;
-		}
+		mjewelersItems.clear();
+		
 
 	}
 	
@@ -58,7 +56,7 @@ public:
 	int findItemIdByLocation(float mouseX, float mouseY);
 
 private:
-	std::vector<Item*> & mjewelersItems;
+	std::vector<std::shared_ptr<Item>> & mjewelersItems;
 	std::vector<int> &nodeColors;
 	bool isToucheWithinBoard(float x, float y);
 	void nodeMouseCheck(King::Engine& engine);
@@ -76,7 +74,7 @@ private:
 	float mStartMouseX;
 	float mStartMouseY;
 	bool isSwaping;
-	Match3Graph* mMatch3Graph;
+	std::shared_ptr<Match3Graph> mMatch3Graph;
 
 	std::shared_ptr<CommandManager> mCommandManager; // command manager
 
