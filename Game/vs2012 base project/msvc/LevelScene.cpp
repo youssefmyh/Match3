@@ -1,5 +1,5 @@
 #include "LevelScene.h"
-
+#include <iostream>
 
 void LevelScene::Start() {
 	mEngine.Start(*this);
@@ -58,8 +58,10 @@ void LevelScene::Update() {
 	{
 		removeMatchedNodes(matchedNodes[i]);
 		nodesGravityCheck(matchedNodes[i]);
+		fillTopVector();
 	}
 
+	
 
 	if (mEngine.GetMouseButtonDown()) {
 
@@ -101,6 +103,23 @@ void LevelScene::removeMatchedNodes(std::vector<int> markedNodes) {
 	}
 
 
+}
+
+void LevelScene::fillTopVector()
+{
+	for (size_t i = GAME_MAX_CELLS; i < mlevelColors.size(); i++)
+	{
+
+		if (mlevelColors[i] == -1) {
+			
+			mlevelColors[i] =  rand() % 5;
+			std::cout << "New Rand " << mlevelColors[i] << "\n";
+
+				jewelers[i] = std::move(std::make_shared<JewelryItem>(mlevelColors[i] +1 , 0, 0, 35, 35));
+		
+		}
+
+	}
 }
 
 void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)

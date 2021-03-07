@@ -51,5 +51,7 @@ private:
 	void nodesGravityCheck(std::vector<int>& markedNodes);
 	std::vector<std::vector<int>> swapNodes(int first, int second);
 	void removeMatchedNodes(std::vector<int> markedNodes);
+
+	void fillTopVector();
 };
 
