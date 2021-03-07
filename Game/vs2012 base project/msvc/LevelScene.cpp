@@ -24,7 +24,7 @@ void LevelScene::load()
 	int boardXLocation = std::get<0>(mBackground->getBoardLocation());
 	int boardYLocation = std::get<1>(mBackground->getBoardLocation());
 
-	for (uint32_t i = 0;  i< GAME_MAX_CELLS;  i++)
+	for (uint32_t i = 0;  i< mlevelColors.size();  i++)
 	{
 		JewelryItem *jItem = new JewelryItem(mlevelColors[i]+1, 0, 0,textureWidth,textureHeight);
 		mMatch3Graph->addNode(mlevelColors[i], i);
@@ -57,6 +57,7 @@ void LevelScene::Update() {
 	for (size_t i = 0; i < matchedNodes.size(); i++)
 	{
 		removeMatchedNodes(matchedNodes[i]);
+		nodesGravityCheck(matchedNodes[i]);
 	}
 
 
@@ -141,16 +142,26 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 		{
 
 			int removedNodeId = markedNodes[col];
+
 			int nodeColor = mlevelColors[removedNodeId];
+
+			Item * removedNodeItem = jewelers[removedNodeId];
+
 			if (nodeColor == -1) {
 
 				uint32_t nodeTobeMoved = removedNodeId + markedNodes.size() * GAME_COL_MAX;
+
+				Item* nodeTobMovedItem = jewelers[nodeTobeMoved];
+
 
 				if (nodeTobeMoved < mlevelColors.size()) {
 
 					mlevelColors[removedNodeId] = mlevelColors[nodeTobeMoved];
 
 					markedNodes[col] = nodeTobeMoved;
+
+					jewelers[removedNodeId] = nodeTobMovedItem;
+
 
 				}
 				else {
@@ -159,6 +170,7 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 				}
 
 				mlevelColors[nodeTobeMoved] = -1;
+				jewelers[nodeTobeMoved] = nullptr;
 			}
 
 		}
@@ -171,9 +183,11 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 			if (nodeColor == -1) {
 
 				uint32_t nodeTobeMoved = removedNodeId + GAME_COL_MAX;
+				Item* nodeTobMovedItem = jewelers[nodeTobeMoved];
 
 				if (nodeTobeMoved < mlevelColors.size()) {
 					mlevelColors[removedNodeId] = mlevelColors[nodeTobeMoved];
+					jewelers[removedNodeId] = nodeTobMovedItem;
 
 					markedNodes[row] = nodeTobeMoved;
 				}
@@ -181,6 +195,7 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 					mlevelColors[removedNodeId] = rand() % 5;
 				}
 				mlevelColors[nodeTobeMoved] = -1;
+				jewelers[nodeTobeMoved] = nullptr;
 			}
 
 		}

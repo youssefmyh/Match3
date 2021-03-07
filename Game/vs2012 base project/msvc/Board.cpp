@@ -3,7 +3,7 @@
 void Board::update(King::Engine& engine)
 {
 
-	for (unsigned i = 0 ; i < mjewelersItems.size(); i++ )
+	for (unsigned i = 0 ; i < GAME_MAX_CELLS; i++ )
 	{
 		std::tuple<int, int> location = Match3Graph::findNodeLocationById(i);
 	
