@@ -15,6 +15,16 @@ int Item::getY() const {
 	return mY;
 }
 
+void Item::animate(bool animate)
+{
+	mAnimate = animate;
+}
+
+bool Item::isAnimate() const
+{
+	return mAnimate;
+}
+
 void Item::setTemporaryLocation(int x, int y) {
 
 	if (tempX != -1 && tempY != -1)

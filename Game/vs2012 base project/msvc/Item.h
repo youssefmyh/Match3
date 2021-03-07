@@ -43,6 +43,10 @@ public:
 	*/
 	void setTemporaryLocation(int x, int y);
 
+	void animate(bool animate);
+
+	bool isAnimate() const;
+
 
 protected:
 	int mItemId;
@@ -55,4 +59,6 @@ protected:
 	int tempY = -1;
 	int mWidth;
 	int mHeight;
+	bool mAnimate = false;
+
 };

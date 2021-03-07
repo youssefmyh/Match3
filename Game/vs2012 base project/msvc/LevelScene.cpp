@@ -165,7 +165,7 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 			int nodeColor = mlevelColors[removedNodeId];
 
 			std::weak_ptr<Item>  removedNodeItem = jewelers[removedNodeId];
-			std::weak_ptr<Item>  deletedNode = jewelers[removedNodeId];
+			std::shared_ptr<Item>  deletedNode = jewelers[removedNodeId];
 
 			if (nodeColor == -1) {
 
@@ -179,9 +179,16 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 					mlevelColors[removedNodeId] = mlevelColors[nodeTobeMoved];
 
 					markedNodes[col] = nodeTobeMoved;
+					
 
 					jewelers[removedNodeId] = nodeTobMovedItem;
-
+					
+					if (nodeTobeMoved < GAME_MAX_CELLS) {
+						jewelers[removedNodeId]->animate(true);
+					}
+					else {
+						jewelers[removedNodeId]->animate(false);
+					}
 
 				}
 				else {
@@ -207,14 +214,22 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 
 				uint32_t nodeTobeMoved = removedNodeId + GAME_COL_MAX;
 				std::shared_ptr<Item> nodeTobMovedItem = jewelers[nodeTobeMoved];
-				std::weak_ptr<Item> deletedNode = jewelers[removedNodeId];
+				std::shared_ptr<Item> deletedNode = jewelers[removedNodeId];
 				if (nodeTobeMoved < mlevelColors.size()) {
 					mlevelColors[removedNodeId] = mlevelColors[nodeTobeMoved];
 
-					
 					jewelers[removedNodeId] = nodeTobMovedItem;
 
 					markedNodes[row] = nodeTobeMoved;
+
+					if (nodeTobeMoved < GAME_MAX_CELLS) {
+						jewelers[removedNodeId]->animate(true);
+					}
+					else {
+						jewelers[removedNodeId]->animate(false);
+					}
+
+
 				}
 				else {
 

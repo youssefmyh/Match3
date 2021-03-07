@@ -159,15 +159,6 @@ void Board::swapTwoNodes(int nodeId, int direction)
 
 	SwapCommand* swap = new SwapCommand(nodeId, swapedNodeId, nodeColors, mjewelersItems, mMatch3Graph);
 	mCommandManager->addCommand(std::move(swap));
-	/*Item *fitem = mjewelersItems[nodeId];
-	Item* sItem = mjewelersItems[swapedNodeId];
-	mjewelersItems[nodeId] = sItem;
-	mjewelersItems[swapedNodeId] = fitem;
-	
-	nodeColors[nodeId] = fitem->getItemId();
-	nodeColors[swapedNodeId] = sItem->getItemId();
-
-	*/
 
 }
 
