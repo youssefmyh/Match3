@@ -92,8 +92,6 @@ void LevelScene::Update() {
 }
 
 
-
-
 void LevelScene::removeMatchedNodes(std::vector<int> markedNodes) {
 
 	for (unsigned int i = 0; i < markedNodes.size(); i++) {
@@ -106,7 +104,10 @@ void LevelScene::removeMatchedNodes(std::vector<int> markedNodes) {
 
 void LevelScene::fillTopVector()
 {
-	for (size_t i = GAME_MAX_CELLS; i < mlevelColors.size(); i++)
+	std::shared_ptr<FillCommand> fillCommand = std::make_shared<FillCommand>(mlevelColors, jewelers, mMatch3Graph);
+	mCommandManager->addCommand(fillCommand);
+
+	/*for (size_t i = GAME_MAX_CELLS; i < mlevelColors.size(); i++)
 	{
 
 		if (mlevelColors[i] == -1) {
@@ -117,7 +118,7 @@ void LevelScene::fillTopVector()
 		
 		}
 
-	}
+	}*/
 }
 
 void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
@@ -145,9 +146,7 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 		uint32_t maxNodeForCol = markedNodes[lastNodeIndex] + markedNodes.size() * GAME_COL_MAX;
 		if (maxNodeForCol > mlevelColors.size() - 1) // back point to move all points to up
 			return;
-
 	}
-
 
 	if (isVertical) {
 
@@ -179,11 +178,13 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 
 					jewelers[removedNodeId] = nodeTobMovedItem;
 					
-					if (nodeTobeMoved < GAME_MAX_CELLS) {
-						jewelers[removedNodeId]->animate(true);
-					}
-					else {
-						jewelers[removedNodeId]->animate(false);
+					if (jewelers[removedNodeId] != nullptr) {
+						if (nodeTobeMoved < GAME_MAX_CELLS) {
+							jewelers[removedNodeId]->animate(true);
+						}
+						else {
+							jewelers[removedNodeId]->animate(false);
+						}
 					}
 
 				}
@@ -218,13 +219,16 @@ void LevelScene::nodesGravityCheck(std::vector<int>& markedNodes)
 
 					markedNodes[row] = nodeTobeMoved;
 
-					if (nodeTobeMoved < GAME_MAX_CELLS) {
-						jewelers[removedNodeId]->animate(true);
-					}
-					else {
-						jewelers[removedNodeId]->animate(false);
-					}
+					jewelers[removedNodeId] = nodeTobMovedItem;
 
+					if (jewelers[removedNodeId] != nullptr) {
+						if (nodeTobeMoved < GAME_MAX_CELLS) {
+							jewelers[removedNodeId]->animate(true);
+						}
+						else {
+							jewelers[removedNodeId]->animate(false);
+						}
+					}
 
 				}
 				else {

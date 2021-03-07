@@ -35,12 +35,16 @@ public:
 	* King Engine Functions
 	*/
 	virtual void Update() = 0;
+
+	/*
+	* Start the level
+	*/
 	virtual void Start() = 0;
 	
 
 protected:
-	King::Engine mEngine;
-	std::shared_ptr<Match3Graph> mMatch3Graph;
+	King::Engine mEngine; // engine
+	std::shared_ptr<Match3Graph> mMatch3Graph; // match3 Algorthim
 
 };
 

@@ -13,22 +13,24 @@ public:
 	BackgroundItem(int itemId, int x, int y) :Item(itemId, x, y){}
 
 	/*update
-	*
+	*@param King engine
 	*/
 	void update(King::Engine& engine);
 
-	/*update
-	*
+	/*move
+	*@param x
+	* @param y
 	*/
 	void move(int x, int y);
 
-	/*update
-	*
+	/*setLocation
+	*@param x
+	* @param y
 	*/
 	void setLocation(int x, int y);	
 
-	/*update
-	*
+	/*getBoardLocation
+	*@return tuple of x and y
 	*/
 	std::tuple<int, int> getBoardLocation();
 

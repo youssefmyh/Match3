@@ -28,12 +28,18 @@ public:
 
 
 private:
-	int mFistNodeId;
-	int mSecondNodeId;
-	bool mCompleted;
-	std::shared_ptr<Match3Graph> &mMatch3Graph;
-	std::vector<int> &mlevelColors;
-	std::vector<std::shared_ptr<Item>> &jewelers;
-	std::vector<std::vector<int>> swapNodes(int first, int second);
+	int mFistNodeId; // first node id to be swapped
+	int mSecondNodeId; // second node id
+	bool mCompleted; // is animation completed
+	std::shared_ptr<Match3Graph> &mMatch3Graph; // match3 algorthim reference 
+
+	std::vector<int> &mlevelColors; // level color referece need to be renamed to be nodeColors
+	std::vector<std::shared_ptr<Item>> &jewelers;  // jewelers reference 
+
+	/*swapNodes
+	* @param int first node
+	* @param int second node
+	*/
+	std::vector<std::vector<int>> swapNodes(int first, int second); // 
 };
 

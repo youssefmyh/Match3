@@ -85,12 +85,14 @@
     <ClCompile Include="BackgroundItem.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="FillCommand.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="JewelryItem.cpp" />
     <ClCompile Include="LevelRepository.cpp" />
     <ClCompile Include="LevelScene.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="Match3Graph.cpp" />
+    <ClCompile Include="RemoveMatchedCommand.cpp" />
     <ClCompile Include="SwapCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +107,7 @@
     <ClInclude Include="Board.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="FillCommand.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="JewelryItem.h" />
     <ClInclude Include="Level.h" />
@@ -113,6 +116,7 @@
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="Match3Graph.h" />
     <ClInclude Include="Match3Settings.h" />
+    <ClInclude Include="RemoveMatchedCommand.h" />
     <ClInclude Include="SwapCommand.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

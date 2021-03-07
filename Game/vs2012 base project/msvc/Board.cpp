@@ -157,9 +157,8 @@ void Board::swapTwoNodes(int nodeId, int direction)
 	if (swapedNodeId < 0 || swapedNodeId > GAME_MAX_CELLS -1 )
 		return;
 
-	SwapCommand* swap = new SwapCommand(nodeId, swapedNodeId, nodeColors, mjewelersItems, mMatch3Graph);
+	std::shared_ptr<SwapCommand> swap = std::make_shared<SwapCommand>(nodeId, swapedNodeId, nodeColors, mjewelersItems, mMatch3Graph);
 	mCommandManager->addCommand(std::move(swap));
-
 }
 
 

@@ -2,6 +2,7 @@
 #include <king/Engine.h>
 #include <king/Updater.h>
 
+
 class Item {
 
 public:
@@ -43,22 +44,29 @@ public:
 	*/
 	void setTemporaryLocation(int x, int y);
 
+	/*animate
+	* animate a specific item
+	* @param animate
+	*/
 	void animate(bool animate);
 
+	/*isAnimate
+	* retrun true if item animating
+	*/
 	bool isAnimate() const;
 
 
 protected:
-	int mItemId;
-	King::Engine::Texture mTexture;
-	int mToX;
-	int mToY;
-	int mX;
-	int mY;
-	int tempX = -1 ;
-	int tempY = -1;
-	int mWidth;
-	int mHeight;
-	bool mAnimate = false;
+	int mItemId; // item Id which linked to range of color( 0 -- 4)
+	King::Engine::Texture mTexture; // Texture Id which linked to range of color( 0 -- 4)
+	int mToX; // move to specific X location 
+	int mToY; // move to specific Y Location 
+	int mX; // mX Item X
+	int mY;  // Item Y
+	int tempX = -1 ; // TempX and Temp Y value used for animation 
+	int tempY = -1; // 
+	int mWidth; // Item width
+	int mHeight; // item Height
+	bool mAnimate = false; /// is item animating 
 
 };

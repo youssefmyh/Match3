@@ -1,7 +1,7 @@
 #include "CommandManager.h"
 
 std::mutex lock_;
-void CommandManager::addCommand(Command *command)
+void CommandManager::addCommand(std::shared_ptr<Command> command)
 {
 	m_commandsQueue.push(command);
 
@@ -19,7 +19,6 @@ void CommandManager::update()
 	mCurrentCommand->execute();
 	if (mCurrentCommand != nullptr && mCurrentCommand->isFinished()){
 		m_commandsQueue.pop();
-		delete mCurrentCommand;
 		mCurrentCommand = nullptr;
 	}
 	

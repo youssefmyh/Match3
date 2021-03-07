@@ -33,18 +33,21 @@ public:
 
 	}
 	
+
 	/*update
-	*
+	*@param King engine
 	*/
 	void update(King::Engine& engine);
 
 	/*move
-	*
+	*@param x
+	* @param y
 	*/
 	void move(int x, int y);
 
 	/*setLocation
-	*
+	*@param x
+	* @param y
 	*/
 	void setLocation(int x, int y);
 
@@ -55,26 +58,36 @@ public:
 	*/
 	int findItemIdByLocation(float mouseX, float mouseY);
 
+
 private:
-	std::vector<std::shared_ptr<Item>> & mjewelersItems;
-	std::vector<int> &nodeColors;
+
+	/*isToucheWithinBoard
+	* check if the mouse inside the Board
+	/*@param int x
+	* @param int y
+	*/
 	bool isToucheWithinBoard(float x, float y);
+
+	/*nodeMouseCheck
+	/*@param Engine
+	*/
 	void nodeMouseCheck(King::Engine& engine);
-
-
 	/*swapTwoNodes
 	/*@param int nodeId
 	/*@param Direction (UP,DOWN,RIGHT,LEFT)
 	*/
 	void swapTwoNodes(int nodeId, int direction);
 
-	int mCellHeight;
-	int mCellWidth;
-	int mDraggedItemIndex;
-	float mStartMouseX;
-	float mStartMouseY;
-	bool isSwaping;
-	std::shared_ptr<Match3Graph> mMatch3Graph;
+private:
+	std::vector<std::shared_ptr<Item>> & mjewelersItems; // jewelers items passed by reference it work like a view for the nodes color
+	std::vector<int> &nodeColors; //  nodes colors it's work like a core or the data of jewelers
+	int mCellHeight; // cell hegith
+	int mCellWidth; // cell width
+	int mDraggedItemIndex; // draged item
+	float mStartMouseX; // start Touch X
+	float mStartMouseY; //  start Touch Y
+	bool isSwaping; // is Swaping 
+	std::shared_ptr<Match3Graph> mMatch3Graph; // pointer to graph algorthim
 
 	std::shared_ptr<CommandManager> mCommandManager; // command manager
 

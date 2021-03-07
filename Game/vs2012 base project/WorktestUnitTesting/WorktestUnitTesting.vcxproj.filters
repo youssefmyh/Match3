@@ -3,15 +3,6 @@
   <ItemGroup>
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="SwapCommandTest.cpp">
-      <Filter>commands</Filter>
-    </ClCompile>
-    <ClCompile Include="RemoveCommandTest.cpp">
-      <Filter>commands</Filter>
-    </ClCompile>
-    <ClCompile Include="FillCommandTest.cpp">
-      <Filter>commands</Filter>
-    </ClCompile>
     <ClCompile Include="Match3GraphTest.cpp">
       <Filter>graphlogic</Filter>
     </ClCompile>
